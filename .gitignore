@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Python distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# Model artifacts
+models/
+
+# Data files (keep locally only)
+data/
+
+# Optional: ignore output folders
+outputs/
