@@ -2,6 +2,64 @@
 
 Before tackling the 12 challenges, understand what you're building!
 
+## 💼 Real-World Use Cases
+- **Telecom:** Predict which customers will cancel subscriptions and target retention offers.
+- **SaaS:** Identify trial users likely to churn and personalize onboarding.
+- **Finance:** Detect when clients are likely to close their accounts.
+
+---
+
+## 📊 Recommended Datasets for Weeks 4-5
+
+Choose ONE dataset below to build your churn predictor:
+
+### Option 1: Kaggle - Telco Customer Churn ✅ **BEST FOR THIS PROJECT**
+- **What:** Telecom company customer churn data
+- **Size:** 7,043 customers, 19 features (demographics, services, billing)
+- **Target:** Churn (Yes/No)
+- **Where:** https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+- **How to load:**
+  ```python
+  df = pd.read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
+  ```
+- **Why:** Perfect fit for this project, real business data, clear churn target.
+- **Data quality:** Clean, ~11% churn rate (realistic imbalance).
+
+### Option 2: Kaggle - IBM HR Analytics Attrition 👥
+- **What:** Employee attrition and satisfaction data
+- **Size:** 1,470 employees, 34 features (salary, department, role, satisfaction scores)
+- **Target:** Attrition (Yes/No)
+- **Where:** https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset
+- **How to load:**
+  ```python
+  df = pd.read_csv('WA_Fn-UseC_-HR-Employee-Attrition.csv')
+  ```
+- **Why:** Similar structure to churn, teach you features beyond just billing.
+- **Interesting twist:** Built-in from IBM Watson Analytics.
+
+### Option 3: Kaggle - Bank Customer Churn 🏦
+- **What:** Bank customer churn with credit scores, age, salary, etc.
+- **Size:** 10,000 customers, 10 features
+- **Target:** Exited (0 or 1)
+- **Where:** https://www.kaggle.com/datasets/mathchi/churn-for-bank-customers
+- **How to load:**
+  ```python
+  df = pd.read_csv('Churn_Modelling.csv')
+  ```
+- **Why:** Financial institution data, interesting demographic patterns.
+- **Data quality:** Balanced target (20% churn).
+
+### Option 4: UCI ML - Customer Churn 📞
+- **What:** Another telecom churn dataset with slightly different features
+- **Size:** 3,333 customers, 11 features
+- **Where:** https://archive.ics.uci.edu/dataset/693/telephone+service+churn
+- **How to load:**
+  ```python
+  df = pd.read_csv('churn.data', header=None)
+  df.columns = ['feature1', 'feature2', ...]  # Rename as needed
+  ```
+- **Why:** Smaller, simpler, good for debugging before tackling larger datasets.
+
 ---
 
 ## 🎯 Big Picture: What is a Complete ML Project?

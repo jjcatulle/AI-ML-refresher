@@ -12,6 +12,197 @@ Build an AI agent that can use multiple tools to accomplish complex tasks throug
 - Tool chaining (one tool output → another tool input)
 - Evaluating agent performance
 
+## 💼 Real-World Use Cases
+- **Customer support automation:** Agents decide whether to answer, search knowledge base, or escalate.
+- **DevOps assistants:** Agents run diagnostics, restart services, and report status.
+- **Research assistants:** Agents fetch data, summarize papers, and generate citations.
+
+---
+
+## 🛠️ Recommended Tools/APIs for Weeks 11-12
+
+For Multi-Tool Agents, you'll create or connect to different tools. Choose a combination:
+
+### Tool Option 1: Math Tools ✅ **EASIEST & RECOMMENDED**
+- **What:** Calculator functions that agents use
+- **Implementation:**
+  ```python
+  def add(a: float, b: float) -> float:
+      """Add two numbers"""
+      return a + b
+  
+  def multiply(a: float, b: float) -> float:
+      """Multiply two numbers"""
+      return a * b
+  
+  def power(base: float, exponent: float) -> float:
+      """Raise base to exponent power"""
+      return base ** exponent
+  ```
+- **Use case:** Agent solves math problems (e.g., "What's 2^10 * 5?")
+- **Why:** Simple to understand, focuses on agent logic not external APIs.
+
+### Tool Option 2: Web Search + Weather APIs 🌐
+- **What:** Connect to free public APIs
+- **Popular services:**
+  - Weather API: `https://open-meteo.com/` (free, no key needed)
+  - Wikipedia search: `pip install wikipedia`
+  - Currency conversion: `fixer.io` (free tier available)
+- **Example:**
+  ```python
+  import requests
+  
+  def get_weather(city: str) -> str:
+      """Get current weather"""
+      response = requests.get(
+          f"https://api.open-meteo.com/v1/forecast?latitude=40&longitude=74"
+      )
+      return response.json()
+  
+  def search_wikipedia(query: str) -> str:
+      """Search Wikipedia"""
+      import wikipedia
+      return wikipedia.summary(query)
+  ```
+- **Setup:** `pip install requests wikipedia`
+- **Why:** Real APIs, good agent practice, practical tools.
+
+### Tool Option 3: Database Query Tools 🗄️
+- **What:** Allow agent to query a database
+- **Setup (SQLite - simple):**
+  ```python
+  import sqlite3
+  
+  def query_database(sql: str) -> list:
+      """Run SQL query"""
+      conn = sqlite3.connect('company.db')
+      cursor = conn.cursor()
+      cursor.execute(sql)
+      return cursor.fetchall()
+  
+  # Agent example query:
+  # "How many employees are in sales?"
+  # Agent translates to: SELECT COUNT(*) FROM employees WHERE dept='Sales'
+  ```
+- **Why:** Real-world skill, agents learn when to query vs when to search.
+
+### Tool Option 4: Code Execution Tool 🐍
+- **What:** Agent can run Python code to solve problems
+- **Implementation:**
+  ```python
+  def code_executor(code: str) -> str:
+      """Execute Python code and return result"""
+      import subprocess
+      result = subprocess.run(
+          ['python', '-c', code],
+          capture_output=True,
+          text=True
+      )
+      return result.stdout
+  
+  # Agent might decide:
+  # "I need to analyze this data, I'll write Python to process it"
+  ```
+- **Security warning:** Only use for trusted code in development!
+- **Why:** Agents become problem-solvers beyond predefined tools.
+
+### Tool Option 5: Language Translation Tools 🌍
+- **What:** Agent translates between languages
+- **Implementation:**
+  ```python
+  from transformers import pipeline
+  
+  def translate_text(text: str, source: str, target: str) -> str:
+      """Translate text between languages"""
+      translator = pipeline(
+          "translation",
+          model=f"Helsinki-NLP/opus-mt-{source}-{target}"
+      )
+      return translator(text)[0]["translation_text"]
+  ```
+- **Setup:** `pip install transformers torch`
+- **Why:** Multi-lingual agents, realistic feature.
+
+### Tool Option 6: Document Search Tool 📄
+- **What:** Agent searches through documents (RAG-style)
+- **Implementation:**
+  ```python
+  from sentence_transformers import SentenceTransformer, util
+  import os
+  
+  def search_documents(query: str, folder: str) -> list:
+      """Find relevant documents"""
+      model = SentenceTransformer('all-MiniLM-L6-v2')
+      
+      # Load all documents
+      docs = []
+      for file in os.listdir(folder):
+          with open(f'{folder}/{file}') as f:
+              docs.append(f.read())
+      
+      # Find most similar
+      query_embedding = model.encode(query)
+      doc_embeddings = model.encode(docs)
+      similarities = util.pytorch_cos_sim(query_embedding, doc_embeddings)
+      
+      top_idx = similarities.argsort(reverse=True)[0]
+      return docs[top_idx]
+  ```
+- **Why:** Combines agent reasoning + document understanding.
+
+### Tool Option 7: Data Analysis Tool 📊
+- **What:** Agent analyzes CSV/data files
+- **Implementation:**
+  ```python
+  import pandas as pd
+  
+  def analyze_data(file: str, operation: str) -> str:
+      """Analyze CSV data"""
+      df = pd.read_csv(file)
+      
+      if operation == "summary":
+          return str(df.describe())
+      elif operation == "correlations":
+          return str(df.corr())
+      elif operation == "missing":
+          return str(df.isnull().sum())
+  ```
+- **Why:** Agents handle data questions (e.g., "What's the average price?").
+
+---
+
+## 🚀 Getting Started Recommendation
+
+**Step 1:** Start with **Option 1** (Math tools)
+- Focus on agent logic, not tool complexity
+- Quick to debug
+- Build confidence
+
+**Step 2:** Add **Option 2** (Web APIs)
+- Learn HTTP requests
+- Real-world APIs
+
+**Step 3:** Combine with **Option 6** (Document search)
+- Now agent has knowledge + reasoning
+- Getting closer to production
+
+---
+
+## 🔗 Tool Chaining Example
+
+```
+User: "Find the weather in Paris and translate it to Spanish"
+
+Agent reasoning:
+1. Need to get Paris weather
+2. Then translate result to Spanish
+
+Actions:
+1. Call get_weather("Paris") → "Sunny, 72°F"
+2. Call translate_text("Sunny, 72°F", "en", "es") → "Soleado, 72°F"
+3. Return result to user
+```
+
 ---
 
 ## Concept 1: Agents vs Chains

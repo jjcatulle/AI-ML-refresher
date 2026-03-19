@@ -13,6 +13,181 @@ Build an end-to-end production ML system: problem → data → model → deploym
 - Deployment and monitoring
 - Documentation and communication
 
+## 💼 Real-World Use Cases
+- **Product analytics:** Build end-to-end A/B testing and model deployment pipelines.
+- **Fintech:** Build credit scoring systems with risk monitoring and compliance.
+- **Healthcare:** Develop prediction systems that integrate with operational dashboards and alerting.
+
+---
+
+## 🎯 Recommended Capstone Project Ideas
+
+Choose ONE project below that excites you. This will be your production ML system:
+
+### Option 1: Customer Churn Predictor (Extended) ✅ **RECOMMENDED**
+- **Dataset:** Telecom/SaaS customer churn data (from Week 4-5)
+- **Scope:** Add to previous project with monitoring + retraining
+- **Deliverables:**
+  - Better model (ensembles, hyperparameter tuning)
+  - FastAPI deployment
+  - Data drift monitoring
+  - Automated retraining pipeline
+  - Business dashboard
+- **Why:** Build on existing knowledge, realistic end-to-end project.
+- **Datasets:** Kaggle Telco, IBM HR, Bank Customer Churn
+
+### Option 2: Recommendation System 🎬
+- **What:** Predict products/movies/content users will like
+- **Dataset sources:**
+  - MovieLens: https://grouplens.org/datasets/movielens/
+  - Amazon Reviews: https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews
+  - Book Ratings: https://www.kaggle.com/datasets/sootersaalu/amazon-top-50-bestselling-books-2009-2019
+- **Concepts:**
+  - Collaborative filtering
+  - Content-based filtering
+  - Matrix factorization
+  - A/B testing
+- **Deliverables:**
+  - Recommendation API
+  - Personalization engine
+  - Performance metrics
+- **Why:** Fun, real-world application, user-facing.
+
+### Option 3: Image Classification System 📷
+- **What:** Classify images into categories (e.g., medical scans, product types)
+- **Dataset sources:**
+  - Kaggle Plant Disease: https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset
+  - Kaggle Furniture: Search "furniture classification"
+  - Medical imaging: https://www.kaggle.com/datasets/c1d9c2c1d9c2/covid-19-radiography-database
+- **Concepts:**
+  - Transfer learning with ResNet/VGG
+  - Data augmentation
+  - Model optimization (quantization, pruning)
+  - Real-time inference
+- **Deliverables:**
+  - Web UI for uploading images
+  - API for classification
+  - Performance monitoring
+- **Why:** Deep learning capstone, impressive results.
+
+### Option 4: Time Series Forecasting 📈
+- **What:** Predict future values (stock prices, website traffic, energy consumption)
+- **Dataset sources:**
+  - Stock data: https://www.kaggle.com/datasets/borismarjanovic/price-volume-data-for-all-us-stocks-etfs
+  - Website traffic: https://www.kaggle.com/datasets/bolbol/wikipedia-daily-views
+  - Energy: https://www.kaggle.com/datasets/nicholasjhana/energy-consumption-generation-prices
+- **Concepts:**
+  - ARIMA, SARIMA
+  - LSTM networks
+  - Seasonality detection
+  - Uncertainty quantification
+- **Deliverables:**
+  - Forecast API
+  - Confidence intervals
+  - Alert system (if forecast exceeds threshold)
+- **Why:** Different problem type (temporal), useful for planning.
+
+### Option 5: Natural Language Processing (Sentiment Analysis) 💬
+- **What:** Analyze sentiment of reviews/social media
+- **Dataset sources:**
+  - Movie reviews: https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
+  - Twitter sentiment: https://www.kaggle.com/datasets/kazanova/sentiment140
+  - Product reviews: https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews
+- **Concepts:**
+  - Text preprocessing (tokenization, stemming)
+  - TF-IDF, word embeddings
+  - BERT/RoBERTa fine-tuning
+  - Multi-class classification
+- **Deliverables:**
+  - Sentiment API
+  - Dashboard showing sentiment trends
+  - Topic extraction
+- **Why:** NLP skills, useful for brand monitoring.
+
+### Option 6: Fraud Detection System 🚨
+- **What:** Identify fraudulent transactions/activity
+- **Dataset sources:**
+  - Credit card fraud: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+  - Transaction fraud: https://www.kaggle.com/datasets/kelvinkelvinkelvin/credit-card-fraud-prediction
+- **Concepts:**
+  - Class imbalance handling (SMOTE, class weights)
+  - Anomaly detection
+  - Real-time scoring
+  - Explainability (SHAP values)
+- **Deliverables:**
+  - Risk scoring API
+  - Alert system for high-risk transactions
+  - Explainability dashboard (why flagged?)
+- **Why:** Business-critical, security awareness.
+
+### Option 7: Healthcare/Medical Diagnosis 🏥
+- **What:** Predict disease risk or diagnose from medical data
+- **Dataset sources:**
+  - Diabetes: https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+  - Heart disease: https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset
+  - Cancer: https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
+- **Concepts:**
+  - Medical data handling (privacy, ethics)
+  - Model interpretability (doctors need to understand)
+  - Handling missing data
+  - Cross-validation for reliability
+- **Deliverables:**
+  - Risk prediction tool
+  - Model explainability
+  - Clinical use guidelines
+- **Why:** High-impact, introduces ethics/fairness considerations.
+
+### Option 8: Your Own Problem 🎯
+- **What:** Choose a real-world problem you care about
+- **Guidelines:**
+  - Find public dataset (or create synthetic data)
+  - Clear target variable
+  - 1000+ rows ideally
+  - Business value of solving it
+- **Examples:**
+  - Predict apartment rental prices (personal finance)
+  - Classify Spotify playlists by mood (music taste)
+  - Forecast coffee sales by weather (business interest)
+- **Why:** Most meaningful for your career and portfolio.
+
+---
+
+## 📋 Capstone Checklist
+
+Whichever project you choose, ensure it includes:
+
+- [ ] **Problem definition:** Why does this matter?
+- [ ] **Data collected:** Cleaned, explored, understood
+- [ ] **Multiple models tried:** Compare approaches
+- [ ] **Strong evaluation:** Metrics, cross-validation, test results
+- [ ] **Deployment ready:** API or web interface
+- [ ] **Monitoring setup:** Data drift, model performance tracking
+- [ ] **Documentation:** README, architecture diagram, how to run
+- [ ] **Business summary:** ROI, insights, recommendations
+- [ ] **Portfolio ready:** Code on GitHub, demo-able to employers
+
+---
+
+## 🚀 Quick Decision Guide
+
+**Choose by interest:**
+| If you like... | Choose... |
+|---|---|
+| Structured data | Churn, Fraud, Healthcare |
+| Images | Image Classification |
+| Videos/Sequences | Time Series |
+| Text | NLP Sentiment |
+| Recommendations | Recommendation System |
+| Your own idea | Custom Project |
+
+**Choose by difficulty:**
+| Difficulty | Project |
+|---|---|
+| Medium | Churn, Sentiment Analysis |
+| Medium-Hard | Fraud Detection, Healthcare |
+| Hard | Image Classification, Recommendations |
+| Hard+ | Time Series (LSTM), Your custom idea |
+
 ---
 
 ## Concept 1: Capstone Components

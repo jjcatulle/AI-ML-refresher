@@ -11,6 +11,77 @@ Build a regression model to predict house prices based on features like size, lo
 - Model comparison (Linear Regression vs Random Forest vs Gradient Boosting)
 - Cross-validation to prevent overfitting
 
+## 💼 Real-World Use Cases
+- **Real estate platforms:** Estimate listing prices automatically and flag outliers.
+- **Mortgage lending:** Predict collateral value for loan approvals.
+- **Construction:** Forecast material costs based on size and location.
+
+---
+
+## 📊 Recommended Datasets for Weeks 6-7
+
+Choose ONE dataset below to build your house price predictor:
+
+### Option 1: Kaggle - House Prices Competition ✅ **BEST FOR THIS PROJECT**
+- **What:** House prices from Ames, Iowa (33 features including square footage, lot size, neighborhood, year built)
+- **Size:** 1,460 training homes, 1,459 test homes
+- **Target:** SalePrice ($)
+- **Where:** https://www.kaggle.com/datasets/c1d9c2c1d9c2c1d9c2/house-prices-advanced-regression-techniques
+- **How to load:**
+  ```python
+  df_train = pd.read_csv('train.csv')
+  df_test = pd.read_csv('test.csv')
+  ```
+- **Why:** Kaggle competition dataset, perfect for regression practice, enriched features.
+- **Reference:** Target ranges $34K - $755K.
+
+### Option 2: Scikit-learn - California Housing 🏠 **EASIEST**
+- **What:** California housing prices (built-in to sklearn)
+- **Size:** 20,640 homes, 8 features (latitude, longitude, age, rooms, bedrooms, households, population, median income)
+- **Target:** Median house value ($)
+- **How to load:**
+  ```python
+  from sklearn.datasets import fetch_california_housing
+  df = fetch_california_housing(as_frame=True).frame
+  ```
+- **Why:** Clean data, perfect for learning, no missing values, easy to work with.
+- **Target ranges:** $14.9K - $500K (in units of $100K).
+
+### Option 3: Kaggle - Boston Housing (Historical) 🏘️
+- **What:** Boston area residential property prices
+- **Size:** 506 homes, 13 features (rooms, age, crime rate, tax, accessibility, etc.)
+- **Target:** Median value ($1000s)
+- **Where:** https://www.kaggle.com/datasets/altruistdelhite04/boston-housing-dataset
+- **How to load:**
+  ```python
+  df = pd.read_csv('housing.csv')
+  ```
+- **Why:** Classic dataset, small and manageable, good for reproducible examples.
+- **Note:** May have outdated prices (1970s data).
+
+### Option 4: Kaggle - Real Estate Data (Global) 🌍
+- **What:** Real property listings from multiple countries/regions
+- **Size:** Varies (10K-50K per dataset)
+- **Where:** Search "real estate" on https://www.kaggle.com/datasets
+- **Popular options:**
+  - "[Country] Property Prices 2023"
+  - "Real Estate Price Prediction"
+- **How to load:**
+  ```python
+  df = pd.read_csv('real_estate_data_[region].csv')
+  ```
+- **Why:** More realistic, location-based features, international insights.
+
+### Option 5: UCI ML - Housing Data 🔍
+- **What:** Generic housing dataset with diverse features
+- **Size:** 506+ instances, 13 features
+- **Where:** https://archive.ics.uci.edu/dataset/109/housing
+- **How to load:**
+  ```python
+  df = pd.read_csv('housing.data', delimiter=r'\s+', header=None)
+  ```
+- **Why:** Another classic option if you want variety.
+
 ---
 
 ## Concept 1: The Regression Problem

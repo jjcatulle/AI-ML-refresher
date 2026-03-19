@@ -12,6 +12,161 @@ Deploy your ML models as REST APIs using FastAPI, containerization, and cloud pl
 - Error handling and logging
 - Deployment and scaling
 
+## 💼 Real-World Use Cases
+- **Productization:** Serve model predictions to web/mobile apps.
+- **Internal tools:** Provide APIs for data teams to access ML models easily.
+- **Automated reporting:** Trigger predictions on a schedule (cron) and store results.
+
+---
+
+## 🎯 Recommended Models for Weeks 27-28
+
+For FastAPI, you need a **pre-trained model** (not a dataset). Choose ONE:
+
+### Option 1: Iris Classifier ✅ **EASIEST & RECOMMENDED**
+- **What:** Pre-trained model that classifies iris flowers
+- **How to create:**
+  ```python
+  from sklearn.datasets import load_iris
+  from sklearn.ensemble import RandomForestClassifier
+  import joblib
+  
+  # Train once
+  iris = load_iris()
+  model = RandomForestClassifier(n_estimators=100, random_state=42)
+  model.fit(iris.data, iris.target)
+  
+  # Save for API
+  joblib.dump(model, 'iris_model.pkl')
+  ```
+- **API Input:** 4 features (sepal length, sepal width, petal length, petal width)
+- **API Output:** Iris species prediction
+- **Why:** Simple, quick to set up, focus on API dev not training.
+
+### Option 2: Your Own Trained Model 🔧
+- **What:** Use a model from earlier weeks
+- **Options:**
+  - Churn predictor (Weeks 4-5)
+  - House price predictor (Weeks 6-7)
+  - Any model you trained previously
+- **How to use:**
+  ```python
+  import pickle
+  
+  # Load your existing model
+  with open('my_model.pkl', 'rb') as f:
+      model = pickle.load(f)
+  
+  # Use in FastAPI
+  @app.post("/predict")
+  def predict(request: PredictionRequest):
+      prediction = model.predict([[...]])
+      return {"prediction": prediction}
+  ```
+- **Why:** Real practice with your own models, reinforces earlier learning.
+
+### Option 3: Pre-trained Hugging Face Models 🤗 **FOR LLM/TEXT**
+- **What:** Download ready-to-use models from Hugging Face
+- **Examples:**
+  ```python
+  from transformers import pipeline
+  
+  # Sentiment analysis
+  classifier = pipeline("sentiment-analysis")
+  
+  # Text summarization
+  summarizer = pipeline("summarization")
+  
+  # Question answering
+  qa = pipeline("question-answering")
+  ```
+- **How to use in API:**
+  ```python
+  @app.post("/sentiment")
+  def analyze_sentiment(request: SentimentRequest):
+      result = classifier(request.text)
+      return {"sentiment": result}
+  ```
+- **Why:** Pre-built, production-ready, great for NLP.
+- **Setup:** `pip install transformers torch`
+
+### Option 4: Pre-trained Scikit-learn Models 🎓
+- **What:** Simple classifiers/regressors from sklearn
+- **Gallery of pre-built examples:**
+  ```python
+  from sklearn import datasets, svm
+  
+  # Example: SVM classifier
+  X, y = datasets.load_digits(return_X_y=True)
+  clf = svm.SVC(gamma=0.001)
+  clf.fit(X, y)
+  
+  # Save and deploy
+  import joblib
+  joblib.dump(clf, 'digit_classifier.pkl')
+  ```
+- **Why:** Lightweight, portable, easy to serialize.
+
+### Option 5: PyTorch/TensorFlow Models 🧠
+- **What:** Deep learning models (if you want to serve deep networks)
+- **Where to find:**
+  - PyTorch Hub: `torch.hub.load()`
+  - TensorFlow Hub: `https://www.tensorflow.org/hub`
+- **Examples:**
+  ```python
+  import torch
+  
+  # Get pre-trained ResNet
+  model = torch.hub.load('pytorch/vision:v0.10.0', 'resnet50', pretrained=True)
+  
+  # Or TensorFlow
+  import tensorflow_hub as hub
+  model = hub.load("https://tfhub.dev/...")
+  ```
+- **Why:** Advanced, handles images/complex tasks.
+- **Challenge:** Larger file sizes, more setup needed.
+
+---
+
+## 🚀 Quick Start Recommendation
+
+**For fastest learning:** Use **Option 1** (Iris classifier)
+- Train in 5 seconds
+- Deploy in 10 minutes
+- Focus on API design, not model training
+
+**For depth:** Use **Option 2** (your own model)
+- Reinforces earlier projects
+- More realistic scenario
+- Shows end-to-end workflow
+
+---
+
+## 📦 Model Serialization Reference
+
+Save your model ONCE, load it many times:
+
+```python
+# SAVE (do once after training)
+import joblib
+joblib.dump(model, 'my_model.pkl')
+
+# or pickle
+import pickle
+with open('my_model.pkl', 'wb') as f:
+    pickle.dump(model, f)
+
+# LOAD (in FastAPI)
+import joblib
+model = joblib.load('my_model.pkl')
+
+# Use in prediction
+@app.on_event("startup")
+def load_model():
+    global model
+    model = joblib.load('my_model.pkl')
+```
+
 ---
 
 ## Concept 1: From Notebook to API

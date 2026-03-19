@@ -12,6 +12,132 @@ Build a Convolutional Neural Network to classify images into categories.
 - Transfer learning (pretrained models)
 - Training optimization (learning rate, batch size)
 
+## 💼 Real-World Use Cases
+- **Medical imaging:** Detect tumors in X-rays or MRIs.
+- **Autonomous vehicles:** Identify pedestrians, signs, and obstacles.
+- **Retail:** Classify products from photos for inventory.
+
+---
+
+## 🖼️ Recommended Image Datasets for Weeks 17-18
+
+Choose ONE dataset below to build your CNN:
+
+### Option 1: CIFAR-10 ✅ **BEST FOR LEARNING**
+- **What:** 60,000 images of 10 common objects (airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, trucks)
+- **Size:** 50,000 training + 10,000 test images, 32×32 pixels each, RGB
+- **How to load:**
+  ```python
+  from torchvision.datasets import CIFAR10
+  import torchvision.transforms as transforms
+  
+  dataset = CIFAR10(root='./data', download=True, train=True)
+  
+  # Or with TensorFlow
+  from tensorflow.keras.datasets import cifar10
+  (x_train, y_train), (x_test, y_test) = cifar10.load_data()
+  ```
+- **Why:** Small images, easy to train locally, automatic download.
+- **Time to train:** ~30-60 min on CPU, ~5-10 min on GPU.
+
+### Option 2: ImageNet (Subset) - ILSVRC 🏆
+- **What:** 1.2M images, 1,000 classes (dogs, cats, vehicles, plants, etc.)
+- **Size:** HUGE (requires careful setup)
+- **Where:** http://www.image-net.org/
+- **How to load:**
+  ```python
+  # Not recommended for first time - too large
+  # But great for transfer learning after learning basics
+  from torchvision.datasets import ImageNet
+  dataset = ImageNet(root='./data', split='train')
+  ```
+- **Why:** Industry standard benchmark, enables transfer learning.
+- **Challenge:** Requires significant storage (100+ GB).
+
+### Option 3: MNIST (Handwritten Digits) 📝 **EASIEST BUT OUTDATED**
+- **What:** 70,000 images of handwritten digits (0-9)
+- **Size:** 60,000 training + 10,000 test, 28×28 grayscale
+- **How to load:**
+  ```python
+  from torchvision.datasets import MNIST
+  dataset = MNIST(root='./data', download=True, train=True)
+  
+  # Or Keras
+  from tensorflow.keras.datasets import mnist
+  (x_train, y_train), (x_test, y_test) = mnist.load_data()
+  ```
+- **Why:** Tiny images, trains instantly, classic benchmark.
+- **Limitation:** Too simple for modern CNNs (97%+ accuracy easily achieved).
+
+### Option 4: Kaggle - Dogs vs Cats 🐕🐈
+- **What:** 25,000 images of cats and dogs
+- **Size:** ~750 MB, high resolution (varies, typically 200-300 px)
+- **Where:** https://www.kaggle.com/datasets/shaunhwang/dogs-vs-cats-image-classification
+- **How to load:**
+  ```python
+  from PIL import Image
+  import os
+  
+  images = []
+  labels = []
+  for file in os.listdir('data/'):
+      if 'cat' in file:
+          labels.append(0)
+      else:
+          labels.append(1)
+      img = Image.open(f'data/{file}')
+      images.append(np.array(img))
+  ```
+- **Why:** Realistic, fun binary classification, good for beginners.
+- **Challenge:** Varying image sizes (need to resize).
+
+### Option 5: Kaggle - Fashion MNIST 👕
+- **What:** 70,000 images of fashion items (shoes, shirts, bags, etc.)
+- **Size:** 28×28 grayscale, same format as MNIST but more interesting
+- **Where:** https://www.kaggle.com/datasets/zalando-research/fashionmnist
+- **How to load:**
+  ```python
+  # Same as MNIST but more classes
+  from tensorflow.keras.datasets import fashion_mnist
+  (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
+  ```
+- **Why:** Slightly harder than MNIST, more interesting classes.
+- **Challenge:** Still relatively simple.
+
+### Option 6: Kaggle - Plant Disease Detection 🌾
+- **What:** ~54,000 images of crop leaves (healthy vs diseased)
+- **Size:** 256×256 color images, 38 classes
+- **Where:** https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset
+- **How to load:**
+  ```python
+  from torchvision.datasets import ImageFolder
+  from torchvision.transforms import transforms
+  
+  dataset = ImageFolder(root='data/', transform=transforms.ToTensor())
+  ```
+- **Why:** Real-world application, organized into folders, good for transfer learning.
+- **Challenge:** Larger images, more classes (better learning opportunity).
+
+### Option 7: Stanford Cars Dataset 🏎️
+- **What:** 16,185 images of cars (196 models)
+- **Size:** ~1.8 GB
+- **Where:** http://ai.stanford.edu/~jkrause/cars/car_dataset.html
+- **How to load:**
+  ```python
+  # Download and extract
+  ! wget http://ai.stanford.edu/~jkrause/cars/car_ims.tgz
+  ! tar xzf car_ims.tgz
+  ```
+- **Why:** Fine-grained classification (similar objects, different classes).
+
+---
+
+## 🚀 Quick Start Recommendation
+
+**If learning CNNs for first time:** Use **CIFAR-10** (best balance of simplicity + challenge)  
+**If want instant results:** Use **MNIST** (fastest to train)  
+**If want real-world experience:** Use **Dogs vs Cats** or **Plant Disease** (practical applications)
+
 ---
 
 ## Concept 1: From Pixels to Classes

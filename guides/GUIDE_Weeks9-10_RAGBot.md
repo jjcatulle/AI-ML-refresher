@@ -12,6 +12,129 @@ Build a Retrieval-Augmented Generation (RAG) chatbot that can answer questions a
 - Prompt engineering for context
 - Integration with OpenAI API
 
+## 💼 Real-World Use Cases
+- **Customer support bots:** Answer questions using product manuals, support articles, and FAQs.
+- **Legal assistants:** Retrieve contract clauses and summarize obligations.
+- **Sales enablement:** Provide reps with quick answers from internal playbooks and case studies.
+
+---
+
+## 📚 Recommended Documents for Weeks 9-10
+
+RAG projects need **text documents**, not traditional datasets. Choose ONE option below:
+
+### Option 1: Create Synthetic Documentation ✅ **EASIEST**
+- **What:** Write your own documents about a topic
+- **Format:** Plain text .txt files or markdown .md files
+- **Example topics:**
+  - Python programming guide (10-20 pages)
+  - Product manual for imaginary SaaS app
+  - Company handbook/policies
+  - Tutorial series (e.g., "How to use FastAPI")
+- **How to create:**
+  ```python
+  # Create sample documents
+  documents = [
+      "document1.txt: Contains X concepts...",
+      "document2.txt: Contains Y features...",
+      # etc.
+  ]
+  
+  # Or use Lorem Ipsum to generate dummy text
+  ```
+- **Why:** Full control, no licensing issues, custom to your interests.
+- **Effort:** 2-3 hours to write 2-3 good docs.
+
+### Option 2: Wikipedia Articles 📖
+- **What:** Free, public educational content
+- **How to use:**
+  ```python
+  import wikipedia
+  
+  # Get article text
+  page = wikipedia.page("Machine Learning")
+  text = page.content
+  
+  # Save to file
+  with open('ml_guide.txt', 'w') as f:
+      f.write(text)
+  ```
+- **Topics:** Pick ANY Wikipedia article(s) (e.g., history, technology, science)
+- **Why:** Free, diverse, public domain.
+- **Limitation:** May not relate to specific domain.
+
+### Option 3: Kaggle - Document Datasets 🗂️
+- **What:** Pre-collected document corpora
+- **Examples:**
+  - https://www.kaggle.com/datasets/Cornell-University/arxiv (scientific papers)
+  - https://www.kaggle.com/datasets/towardsdatascience/medium-articles (blog posts)
+  - https://www.kaggle.com/datasets/liuhuiting/books-dataset (book content)
+- **How to use:**
+  ```python
+  # Download from Kaggle
+  # Extract text files
+  documents = []
+  for file in os.listdir('data/'):
+      with open(f'data/{file}', 'r') as f:
+          documents.append(f.read())
+  ```
+- **Why:** Curated, diverse, good quality.
+
+### Option 4: GitHub README Files 💻
+- **What:** Project documentation from open source
+- **How to get:**
+  ```python
+  # Clone repositories
+  ! git clone https://github.com/[user]/[repo].git
+  
+  # Extract README.md files
+  import os
+  docs = []
+  for root, dirs, files in os.walk('.'):
+      for file in files:
+          if file == 'README.md':
+              with open(os.path.join(root, file)) as f:
+                  docs.append(f.read())
+  ```
+- **Popular repos:** Tensorflow, PyTorch, FastAPI (diverse technical content)
+- **Why:** Real-world documentation, technical depth.
+
+### Option 5: PDF Documents + Text Extraction 📄
+- **What:** Convert PDF papers, manuals, reports to text
+- **How to extract:**
+  ```python
+  from PyPDF2 import PdfReader
+  
+  reader = PdfReader("document.pdf")
+  text = ""
+  for page in reader.pages:
+      text += page.extract_text()
+  ```
+- **Sources:**
+  - Academic papers (ArXiv, Google Scholar)
+  - Company whitepapers
+  - News articles
+  - Textbooks
+- **Why:** Common in production RAG systems.
+- **Setup:** Requires `pip install PyPDF2`
+
+### Option 6: Your Own Content 🎯
+- **What:** Use real documentation from a personal project
+- **Examples:**
+  - Your learning notes from this course
+  - Blog posts you've written
+  - Project documentation
+  - Email chains (sanitized)
+- **Why:** Most meaningful for learning, directly useful.
+
+---
+
+## 🚀 Quick Start Recommendation
+
+**If you have 1 hour:** Use **Option 1** (write 3 simple docs about a topic you know)  
+**If you have 30 min:** Use **Option 2** (grab Wikipedia articles)  
+**If you want variety:** Use **Option 4** (GitHub READMEs - instant library of docs)
+
 ---
 
 ## Concept 1: The RAG Problem
