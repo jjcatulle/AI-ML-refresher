@@ -9,8 +9,8 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 ## PHASE 1: ML & Data Science Fundamentals (Weeks 1-8)
 
 ### ✅ Week 1: Data Exploration (10 Challenges)
-**Guide**: `../guides/GUIDE_Week1_DataExploration.md`  
-**Starter**: `../starters/STARTER_Week1_DataExploration.ipynb`  
+**Guide**: `../guides/phase1/GUIDE_Week1_DataExploration.md`  
+**Starter**: `../phases/phase1/starters/STARTER_Week1_DataExploration.ipynb`  
 **Time**: 4-6 hours
 
 - [ ] Challenge 1: Import libraries (Pandas, NumPy, Matplotlib)
@@ -24,20 +24,20 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 - [ ] Challenge 9: Create 3 visualizations
 - [ ] Challenge 10: Write insights
 
-**Save to**: `../notebooks/phase1/My_Week1_Exploration.ipynb`
+**Save to**: `../phases/phase1/My_Week1_Exploration.ipynb`
 
 ---
 
 ### Weeks 2-3: Real Kaggle Dataset (Repeat Week 1)
 - [ ] Pick ONE dataset (Titanic, House Prices, or Fraud)
 - [ ] Complete all 10 challenges on new data
-- [ ] Save to: `../notebooks/phase1/My_RealData_Exploration.ipynb`
+- [ ] Save to: `../phases/phase1/My_RealData_Exploration.ipynb`
 
 ---
 
 ### ✅ Weeks 4-5: Customer Churn Predictor - FULL ML PIPELINE (12 Challenges)
-**Guide**: `../guides/GUIDE_Weeks4-5_ChurnPredictor.md`  
-**Starter**: `../starters/STARTER_Weeks4-5_ChurnPredictor.ipynb`  
+**Guide**: `../guides/phase1/GUIDE_Weeks4-5_ChurnPredictor.md`  
+**Starter**: `../phases/phase1/starters/STARTER_Weeks4-5_ChurnPredictor.ipynb`  
 **Time**: 8-12 hours
 
 - [ ] Challenge 1: Setup & load
@@ -53,13 +53,13 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 - [ ] Challenge 11: ROC curves
 - [ ] Challenge 12: Business summary
 
-**Save to**: `../notebooks/phase1/My_ChurnPredictor.ipynb`
+**Save to**: `../phases/phase1/My_ChurnPredictor.ipynb`
 
 ---
 
 ### ✅ Weeks 6-7: House Price Regression (12 Challenges)
-**Guide**: `../guides/GUIDE_Weeks6-7_HousePrice.md`  
-**Starter**: `../starters/STARTER_Weeks6-7_HousePrice.ipynb`  
+**Guide**: `../guides/phase1/GUIDE_Weeks6-7_HousePrice.md`  
+**Starter**: `../phases/phase1/starters/STARTER_Weeks6-7_HousePrice.ipynb`  
 **Time**: 8-10 hours
 
 - [ ] Challenge 1: Load & explore
@@ -75,7 +75,7 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 - [ ] Challenge 11: Residual analysis
 - [ ] Challenge 12: Summary report
 
-**Save to**: `../notebooks/phase1/My_HousPricePredictor.ipynb`
+**Save to**: `../phases/phase1/My_HousPricePredictor.ipynb`
 
 ---
 
@@ -89,8 +89,8 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 ## PHASE 2: LLMs & API Orchestration (Weeks 9-16)
 
 ### ✅ Weeks 9-10: RAG Document Bot (12 Challenges)
-**Guide**: `../guides/GUIDE_Weeks9-10_RAGBot.md`  
-**Starter**: `../starters/STARTER_Weeks9-10_RAGBot.ipynb`  
+**Guide**: `../guides/phase2/GUIDE_Weeks9-10_RAGBot.md`  
+**Starter**: `../phases/phase2/starters/STARTER_Weeks9-10_RAGBot.ipynb`  
 **Time**: 10-12 hours
 
 - [ ] Challenge 1: Create documents
@@ -106,13 +106,13 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 - [ ] Challenge 11: Chat interface
 - [ ] Challenge 12: Documentation
 
-**Save to**: `../notebooks/phase2/My_RAGBot.ipynb`
+**Save to**: `../phases/phase2/My_RAGBot.ipynb`
 
 ---
 
 ### Weeks 11-12: Multi-Tool Agent (12 Challenges)
-**Guide**: `../guides/GUIDE_Weeks11-12_MultiToolAgent.md`  
-**Starter**: `../starters/STARTER_Weeks11-12_MultiToolAgent.ipynb` *(to create)*  
+**Guide**: `../guides/phase2/GUIDE_Weeks11-12_MultiToolAgent.md`  
+**Starter**: `../phases/phase2/starters/STARTER_Weeks11-12_MultiToolAgent.ipynb`  
 **Time**: 10-12 hours
 
 - [ ] Tool definition (3-5 tools)
@@ -125,15 +125,15 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 ---
 
 ### Weeks 13-14: Fine-Tuning LLMs (12 Challenges)
-**Guide**: `../guides/GUIDE_Weeks13-14_FineTuning.md` *(to create)*  
-**Starter**: `../starters/STARTER_Weeks13-14_FineTuning.ipynb` *(to create)*  
+**Guide**: `../guides/phase2/GUIDE_Weeks13-14_FineTuning.md` *(to create)*  
+**Starter**: `../phases/phase2/starters/STARTER_Weeks13-14_FineTuning.ipynb` *(to create)*  
 **Time**: 12-15 hours
 
 ---
 
 ### Weeks 15-16: Advanced Prompt Engineering (12 Challenges)
-**Guide**: `../guides/GUIDE_Weeks15-16_PromptEngineering.md` *(to create)*  
-**Starter**: `../starters/STARTER_Weeks15-16_PromptEngineering.ipynb` *(to create)*  
+**Guide**: `../guides/phase2/GUIDE_Weeks15-16_PromptEngineering.md` *(to create)*  
+**Starter**: `../phases/phase2/starters/STARTER_Weeks15-16_PromptEngineering.ipynb` *(to create)*  
 **Time**: 8-10 hours
 
 ---
@@ -141,8 +141,8 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 ## PHASE 3: Deep Learning & Computer Vision (Weeks 17-26)
 
 ### ✅ Weeks 17-18: CNN Image Classification (12 Challenges)
-**Guide**: `../guides/GUIDE_Weeks17-18_CNN.md`  
-**Starter**: `../starters/STARTER_Weeks17-18_CNN.ipynb`  
+**Guide**: `../guides/phase3/GUIDE_Weeks17-18_CNN.md`  
+**Starter**: `../phases/phase3/starters/STARTER_Weeks17-18_CNN.ipynb`  
 **Time**: 10-12 hours
 
 - [ ] Load & explore images
@@ -158,24 +158,24 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 - [ ] Error analysis
 - [ ] Documentation
 
-**Save to**: `../notebooks/phase3/My_ImageClassifier.ipynb`
+**Save to**: `../phases/phase3/My_ImageClassifier.ipynb`
 
 ---
 
 ### Weeks 19-20: LSTM & Sequential (12 Challenges) *(to create)*
-**Guide**: `../guides/GUIDE_Weeks19-20_LSTM.md` *(to create)*  
+**Guide**: `../guides/phase3/GUIDE_Weeks19-20_LSTM.md` *(to create)*  
 **Time**: 12-14 hours
 
 ---
 
 ### Weeks 21-22: Time Series (12 Challenges) *(to create)*
-**Guide**: `../guides/GUIDE_Weeks21-22_TimeSeries.md` *(to create)*  
+**Guide**: `../guides/phase3/GUIDE_Weeks21-22_TimeSeries.md` *(to create)*  
 **Time**: 10-12 hours
 
 ---
 
 ### Weeks 23-26: Advanced Deep Learning (16 Challenges) *(to create)*
-**Guide**: `../guides/GUIDE_Weeks23-26_AdvancedDL.md` *(to create)*  
+**Guide**: `../guides/phase3/GUIDE_Weeks23-26_AdvancedDL.md` *(to create)*  
 **Time**: 20-24 hours
 
 ---
@@ -183,8 +183,8 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 ## PHASE 4: MLOps & Production (Weeks 27-39)
 
 ### ✅ Weeks 27-28: FastAPI Deployment (12 Challenges)
-**Guide**: `../guides/GUIDE_Weeks27-28_FastAPI.md`  
-**Starter**: `../starters/STARTER_Weeks27-28_FastAPI.ipynb`  
+**Guide**: `../guides/phase4/GUIDE_Weeks27-28_FastAPI.md`  
+**Starter**: `../phases/phase4/starters/STARTER_Weeks27-28_FastAPI.ipynb`  
 **Time**: 8-10 hours
 
 - [ ] Create FastAPI app
@@ -205,20 +205,20 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 ---
 
 ### Weeks 29-30: Docker & Orchestration (12 Challenges) *(to create)*
-**Guide**: `../guides/GUIDE_Weeks29-30_Docker.md` *(to create)*  
+**Guide**: `../guides/phase4/GUIDE_Weeks29-30_Docker.md` *(to create)*  
 **Time**: 10-12 hours
 
 ---
 
 ### Weeks 31-32: ML Pipeline Orchestration (12 Challenges) *(to create)*
-**Guide**: `../guides/GUIDE_Weeks31-32_MLOps.md` *(to create)*  
+**Guide**: `../guides/phase4/GUIDE_Weeks31-32_MLOps.md` *(to create)*  
 **Time**: 12-14 hours
 
 ---
 
 ### ✅ Weeks 33-39: CAPSTONE - End-to-End System (28 Hours)
-**Guide**: `../guides/GUIDE_Weeks33-39_Capstone.md`  
-**Starter**: `../starters/STARTER_Weeks33-39_Capstone.ipynb`  
+**Guide**: `../guides/phase4/GUIDE_Weeks33-39_Capstone.md`  
+**Starter**: `../phases/phase4/starters/STARTER_Weeks33-39_Capstone.ipynb`  
 **Time**: 40-50 hours total
 
 **Choose ONE**:
@@ -267,11 +267,11 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 
 ## 🎯 HOW TO START
 
-1. Read: `../guides/HOW_TO_SOLVE_CHALLENGES.md` (methodology)
+1. Read: `../guides/common/HOW_TO_SOLVE_CHALLENGES.md` (methodology)
 2. Read: Relevant GUIDE markdown (concepts)
 3. Open: Corresponding STARTER notebook (code)
 4. Code: Write YOUR solution (don't copy!)
-5. Save: To `../notebooks/phase{}/`
+5. Save: To `../phases/phase{}/`
 6. Mark: [ ] as complete below
 7. Move: To next challenge
 
@@ -380,4 +380,4 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 ---
 
 *Last Updated: March 18, 2026*
-*Ready to get started? Open `STARTER_Week1_DataExploration.ipynb` now!* 🚀
+*Ready to get started? Open `../phases/phase1/starters/STARTER_Week1_DataExploration.ipynb` now!* 🚀

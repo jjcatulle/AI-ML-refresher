@@ -9,6 +9,25 @@
 - **Your Strengths**: Leverage TypeScript/JavaScript for LLM APIs (Phase 2)
 - **Iterative**: Ship often, iterate fast, learn from failures
 
+### Two Learning Paths
+- **Path A: Absolute Beginner Ramp**: take the foundation ramp first if Python, Jupyter, ML, and data tools are new.
+- **Path B: Fast Track**: skip most of the beginner ramp if you already code comfortably and can debug basic Python on your own.
+
+This roadmap now intentionally goes deeper at the beginning so you build real foundations before model-building.
+
+### Evaluation Is a First-Class Track
+This roadmap assumes you are learning evaluation framework design alongside modeling.
+
+Read [EVALUATION_FRAMEWORK.md](/Users/jjcatulle/Desktop/ML-AI-learning/docs/EVALUATION_FRAMEWORK.md) early and keep using it through every phase.
+
+You are not just learning to build models and agents. You are learning to:
+- define the right success metric,
+- build held-out eval sets,
+- do slice-based error analysis,
+- compare against baselines,
+- add regression tests,
+- run shadow mode before production rollout.
+
 ---
 
 ## 🎯 GOALS
@@ -19,6 +38,9 @@
 - [ ] Master LLM integration and RAG (Retrieval-Augmented Generation)
 - [ ] Train and deploy custom deep learning models
 - [ ] Design and implement ML monitoring & MLOps pipelines
+- [ ] Design vendor-neutral AI systems architectures (portable across cloud providers)
+- [ ] Build autonomous, self-correcting agentic systems with evaluation loops
+- [ ] Implement safety, governance, and compliance guardrails in production
 
 ### Secondary Goals
 - [ ] Contribute to ML open-source projects
@@ -32,6 +54,14 @@
 - Command 20-30% salary premium for AI expertise
 - Flexible career path (startups, big tech, indie)
 
+### 2026 Job-Ready Positioning
+To stand out in 2026, this roadmap now emphasizes AI Systems Architecture, not only model training.
+
+- From single-agent demos to multi-agent orchestration (researcher/writer/critic).
+- From text-only RAG to multimodal context systems (text + image + video + tables).
+- From ad-hoc testing to production eval pipelines (RAGAS + LLM-as-a-Judge + shadow mode).
+- From basic MLOps to governance-first delivery (PII/toxicity/prompt-injection guardrails).
+
 ---
 
 ## 📅 DETAILED SCHEDULE & MILESTONES
@@ -39,10 +69,92 @@
 ### Quick Timeline Reference
 | Phase | Duration | Focus | Status |
 |-------|----------|-------|--------|
+| **Phase 0** | Weeks 0-4 | Foundations, Python, tools, Jupyter, workflow | 🔲 Not Started |
 | **Phase 1** | Weeks 1-8 | ML Fundamentals & Data Handling | 🔲 Not Started |
 | **Phase 2** | Weeks 5-16 | LLMs & Generative AI (Your Strength Zone!) | 🔲 Not Started |
 | **Phase 3** | Weeks 17-26 | Deep Learning & Neural Networks | 🔲 Not Started |
 | **Phase 4** | Weeks 24-39 | MLOps, Production, Portfolio | 🔲 Not Started |
+
+---
+
+## 🌱 PHASE 0: FOUNDATION RAMP (Weeks 0-4, Optional but Strongly Recommended)
+**"Go Slow at the Beginning So Everything Else Goes Faster"**
+
+If you want a true zero-to-mastery learning experience, this phase should come first.
+
+### Why this exists
+Many ML roadmaps fail because they move too quickly into libraries and projects before the learner understands:
+- what machine learning is,
+- how Python code is structured,
+- how notebooks work,
+- what arrays, tables, and plots actually represent,
+- how an ML workflow fits together.
+
+This phase fixes that.
+
+### Learning Outcomes
+By end of Phase 0, you will:
+- ✅ Understand what AI, ML, and Data Science mean in plain language
+- ✅ Understand the 6-step machine learning workflow
+- ✅ Be comfortable inside Jupyter notebooks
+- ✅ Know enough Python to read, modify, and write beginner code
+- ✅ Use Pandas, NumPy, and Matplotlib without guessing
+- ✅ Understand core beginner terms before touching full ML projects
+
+### Phase 0 Modules
+1. **Orientation and ML 101**
+  - What ML is and is not
+  - Types of ML: supervised, unsupervised, reinforcement learning
+  - Examples like recommendations, fraud detection, and classification
+
+2. **Machine Learning Framework**
+  - Problem definition
+  - Data collection
+  - Evaluation setup
+  - Feature thinking
+  - Model selection
+  - Experimentation loop
+
+3. **Environment and Tools**
+  - Python environments
+  - Jupyter notebook workflow
+  - How to install packages
+  - How to ask debugging questions and read errors
+
+4. **Python for ML Beginners**
+  - Variables, strings, numbers, booleans
+  - Lists, dictionaries, loops, functions
+  - Imports, modules, packages
+  - Writing and reading small functions
+
+5. **Data Libraries Bootcamp**
+  - Pandas: tables and CSVs
+  - NumPy: arrays and matrix operations
+  - Matplotlib/Seaborn: plots and visual communication
+
+6. **First ML Workflow Preview**
+  - Train/test split
+  - Fit/predict/evaluate
+  - Overfitting vs underfitting
+  - Why evaluation matters more than hype
+
+### Week-by-Week Breakdown
+
+| Week | Topics | Project/Exercise |
+|------|--------|------------------|
+| 0 | Orientation, ML 101, AI vs ML vs Data Science, types of ML | ML playground notes + plain-language summary |
+| 1 | Python basics, Jupyter walkthrough, debugging, modules/imports | Beginner Python workbook + notebook practice |
+| 2 | Pandas in depth: Series, DataFrames, CSVs, selecting, grouping, cleaning | Data table practice notebook |
+| 3 | NumPy in depth: arrays, shapes, dot product, transpose, variance, indexing | Matrix math mini-lab |
+| 4 | Matplotlib/Seaborn, plotting workflow, first sklearn workflow preview | Visualization mini-project + first tiny model |
+
+### Who should not skip Phase 0
+- Anyone who still feels shaky on Python basics
+- Anyone who sees `DataFrame`, `array`, `shape`, or `train_test_split` and feels uncertain
+- Anyone who wants stronger confidence before heavier projects
+
+### Who can shorten it
+- If you already code professionally, you can compress this phase into 1-2 weeks.
 
 ---
 
@@ -55,6 +167,7 @@ By end of Phase 1, you will:
 - ✅ Understand train/test splits, cross-validation, overfitting
 - ✅ Build classification & regression models with Scikit-learn
 - ✅ Evaluate models using appropriate metrics
+- ✅ Build a repeatable offline evaluation workflow before changing models
 - ✅ Feature engineer and select the best features
 
 ### Core Concepts
@@ -73,17 +186,19 @@ By end of Phase 1, you will:
    - Feature scaling and normalization
    - Hyperparameter tuning
    - Model selection and comparison
+  - Error analysis, threshold tuning, and regression checks
 
 ### Week-by-Week Breakdown
 
 | Week | Topics | Project/Exercise |
 |------|--------|------------------|
-| 1 | NumPy arrays, Pandas DataFrames, basic operations | Load & explore CSV dataset |
-| 2 | EDA, data cleaning, visualizations | Build dashboard with 5+ charts |
-| 3 | Scikit-learn intro, data preprocessing, train/test split | Prepare data pipeline |
-| 4-5 | Classification models, evaluation metrics | **Project: Customer Churn Predictor** |
-| 6-7 | Regression, feature engineering, model comparison | **Project: House Price Predictor** |
-| 8 | Hyperparameter tuning, cross-validation, model selection | Review & optimize best model |
+| 1 | Deep EDA foundations, data types, missing data, descriptive stats | Load & explore CSV dataset slowly |
+| 2 | Visualization depth: histograms, box plots, scatter plots, grouped charts | Build dashboard with 5+ charts and explain each one |
+| 3 | Math-to-code bridge: Normal Equation, Gradient Descent, matrix shapes | Manual linear regression lab |
+| 4 | Scikit-learn intro, train/test split, preprocessing, pipelines | Prepare end-to-end data pipeline |
+| 5-6 | Classification models, thresholds, confusion matrix, ROC, PR, feature importance | **Project: Customer Churn Predictor** |
+| 7-8 | Regression, feature engineering, residuals, comparison across models | **Project: House Price Predictor** |
+| 9-10 | Hyperparameter tuning, cross-validation, model selection | Review, optimize, and publish polished Phase 1 project |
 
 ### Hands-On Projects
 
@@ -165,6 +280,7 @@ By end of Phase 2, you will:
 - ✅ Integrate LLMs into applications using LangChain
 - ✅ Understand embeddings and vector databases
 - ✅ Deploy LLM-powered applications to production
+- ✅ Build eval datasets for RAG and compare versions with repeatable scoring
 - ✅ Understand transformer architecture basics
 
 ### Core Concepts
@@ -181,27 +297,34 @@ By end of Phase 2, you will:
    - Document chunking strategies
 
 3. **LLM Application Architecture**
-   - LangChain framework (chains, agents, tools)
-   - Building multi-step reasoning systems
-   - Memory and context management
-   - Error handling and fallbacks
+  - LangChain framework (chains, agents, tools)
+  - Agentic design patterns: Plan-and-Execute, Reflection, and multi-agent collaboration
+  - Memory and context management
+  - Error handling, retries, and self-correction loops
 
-4. **Practical Deployment**
+4. **Evaluation and Reliability (LLM Systems)**
+  - RAGAS metrics: faithfulness, answer relevance, context precision/recall
+  - LLM-as-a-Judge and Auto Side-by-Side (AutoSxS) comparisons
+  - Adversarial evaluation sets (prompt injection, jailbreaks, hallucination traps)
+  - Shadow mode rollout and online A/B quality measurement
+
+5. **Practical Deployment**
    - Containerizing LLM apps
    - Rate limiting and cost optimization
    - Monitoring token usage
-   - Handling streaming responses
+  - Handling streaming responses
+  - Context caching and selective retrieval for long-context cost control
 
 ### Week-by-Week Breakdown
 
 | Week | Topics | Project/Exercise |
 |------|--------|------------------|
-| 5-6 | Prompt engineering, API basics, LangChain intro | Build simple chatbot |
-| 7-8 | Embeddings, vector DBs, semantic search | **Project: RAG Documentation Bot** (Part 1) |
-| 9-10 | RAG implementation, document chunking | **Project: RAG Documentation Bot** (Part 2) |
-| 11-12 | Multi-step agents, tool use, memory | **Project: Multi-Tool AI Agent** |
+| 5-6 | Prompt engineering, API basics, LangChain intro | Build baseline chatbot |
+| 7-8 | Embeddings, vector DBs, semantic + keyword retrieval | **Project: Hybrid RAG Bot** (Part 1) |
+| 9-10 | RAG implementation, chunking, eval dataset design, RAGAS + LLM-as-a-Judge | **Project: Hybrid RAG Bot** (Part 2) |
+| 11-12 | Multi-agent orchestration (researcher/writer/critic), reflection loops | **Project: Autonomous Multi-Agent System** |
 | 13-14 | Fine-tuning basics, comparison with RAG | **Experiment: Fine-tuning vs RAG** |
-| 15-16 | Deployment, monitoring, cost optimization | Launch production RAG system |
+| 15-16 | Deployment, shadow mode, context caching, cost optimization | Launch production agentic RAG system |
 
 ### Hands-On Projects
 
@@ -350,10 +473,10 @@ from langsmith import evaluate  # LangChain evaluation
 By end of Phase 3, you will:
 - ✅ Understand neural network fundamentals (forward/backward pass)
 - ✅ Build CNNs for computer vision
-- ✅ Build RNNs/LSTMs for sequence data
+- ✅ Understand transformers, attention, and KV caching deeply
 - ✅ Use PyTorch or TensorFlow proficiently
 - ✅ Train models on custom datasets
-- ✅ Understand transformer architecture deeply
+- ✅ Build multimodal retrieval and context pipelines (text + image/video metadata)
 
 ### Core Concepts
 1. **Neural Network Fundamentals**
@@ -369,18 +492,24 @@ By end of Phase 3, you will:
    - Object detection basics
 
 3. **Recurrent Neural Networks (RNNs)**
-   - Sequence processing and BPTT
-   - LSTM and GRU (solving vanishing gradient)
-   - Time series forecasting
-   - Text sequence modeling
+  - Sequence processing and BPTT (historical context)
+  - LSTM and GRU (legacy sequence methods)
+  - Time series forecasting use-cases
+  - Comparison with transformer alternatives
 
 4. **Transformer Basics**
    - Attention mechanism intuition
    - Self-attention and multi-head attention
    - Positional encoding
-   - Why transformers are better than RNNs
+  - Why transformers are better than RNNs
+  - KV cache mechanics and context-window efficiency trade-offs
 
-5. **Training Best Practices**
+5. **Multimodal Context Engineering**
+  - Multimodal embeddings for text, images, and video segments
+  - Diagram/table extraction for technical document QA
+  - Selective retrieval to reduce long-context cost and latency
+
+6. **Training Best Practices**
    - Data augmentation
    - Learning rate scheduling
    - Early stopping
@@ -393,8 +522,8 @@ By end of Phase 3, you will:
 | 17-18 | PyTorch/TensorFlow basics, autograd, tensor ops | Setup & basic networks |
 | 19-20 | CNNs, convolution intuition, pooling | **Project: Image Classification** (Part 1) |
 | 21-22 | Transfer learning, fine-tuning pre-trained models | **Project: Image Classification** (Part 2) |
-| 23-24 | RNNs, LSTMs, sequence modeling | **Project: Sentiment Analysis** |
-| 25-26 | Advanced: Time series, forecasting, transformers | **Project: LSTM Time Series Forecast** |
+| 23-24 | Attention-first sequence modeling, transformer fine-tuning | **Project: Sentiment Analysis (Transformer-first)** |
+| 25-26 | Multimodal retrieval and context engineering | **Project: Multimodal RAG Prototype** |
 
 ### Hands-On Projects
 
@@ -545,6 +674,8 @@ By end of Phase 4, you will:
 - ✅ Version models and track experiments
 - ✅ Build end-to-end ML pipelines
 - ✅ Scale systems from prototype to production
+- ✅ Run shadow mode experiments for safe model upgrades
+- ✅ Implement governance guardrails for safety, privacy, and compliance
 
 ### Core Concepts
 1. **Model Serving**
@@ -569,12 +700,24 @@ By end of Phase 4, you will:
    - Performance monitoring
    - Data drift detection
    - Retraining triggers
+  - Eval result logging and regression tracking
 
-5. **Performance & Optimization**
+5. **Evaluation & Release Safety**
+  - LLM-as-a-Judge + AutoSxS comparisons across large eval suites
+  - Shadow mode and canary release strategies
+  - Regression checks for hallucination, bias, and policy violations
+
+6. **Performance & Optimization**
    - Model compression and quantization
    - Latency optimization
    - Cost optimization
    - Caching strategies
+
+7. **AI Governance & Guardrails**
+  - Input/output moderation layers
+  - PII redaction and sensitive-data masking
+  - Prompt-injection and jailbreak defense patterns
+  - Responsible AI metrics: fairness, harmfulness, refusal quality, policy compliance
 
 ### Week-by-Week Breakdown
 
@@ -582,10 +725,10 @@ By end of Phase 4, you will:
 |------|--------|------------------|
 | 24-26 | FastAPI, model serving, REST APIs | **Project: Model API** |
 | 27-28 | Docker, containerization, deployment | Containerize & deploy to cloud |
-| 29-31 | Monitoring, logging, performance | Add monitoring to production model |
-| 32-34 | End-to-end pipeline, data workflows | **Project: Full ML Pipeline** |
-| 35-37 | Model versioning, experiment tracking | Setup MLflow / W&B |
-| 38-39 | Portfolio assembly, documentation, interviews | Polish projects + interview prep |
+| 29-31 | Monitoring, logging, evals, shadow mode | Add monitoring and shadow mode to production model |
+| 32-34 | End-to-end pipeline, data workflows, self-healing retries | **Project: Full AI System Pipeline** |
+| 35-37 | Model versioning, experiment tracking, guardrails | Setup MLflow/W&B + governance checks |
+| 38-39 | Autonomous agent capstone, safety/bias audit, portfolio packaging | **Production-Grade Autonomous Agent** |
 
 ### Hands-On Projects
 
@@ -823,6 +966,13 @@ Buffer (Weeks 37-39)
 ---
 
 ## 📊 Success Metrics
+
+### Evaluation Framework Milestones
+- [ ] Phase 1: I can choose the correct metric and justify it for a supervised ML task
+- [ ] Phase 1: I can build a held-out eval set and perform slice-based error analysis
+- [ ] Phase 2: I can evaluate retrieval quality separately from answer quality
+- [ ] Phase 2: I can run RAGAS or Judge-based comparisons across prompt/retrieval versions
+- [ ] Phase 4: I can run shadow mode and compare old/new systems before full rollout
 
 ### Technical Milestones (Track Progress)
 - [ ] Phase 1: Ship 2 ML projects (Churn, Housing)

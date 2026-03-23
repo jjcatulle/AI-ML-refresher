@@ -4,6 +4,258 @@ Keep this handy while you code!
 
 ---
 
+## Popular Python ML/AI Engineer Stack (2026)
+
+This section lists the most common tools used by ML/AI engineers across companies.
+
+### 1) Core Data and Math (use every week)
+- `numpy`: fast numerical arrays and matrix math.
+- `pandas`: tabular data loading, cleaning, and analysis.
+- `matplotlib` and `seaborn`: charts for EDA and model diagnostics.
+
+### 2) Classical Machine Learning (must know)
+- `scikit-learn`: preprocessing, baseline models, metrics, and pipelines.
+- `xgboost`, `lightgbm`, `catboost`: high-performing gradient-boosted tree models.
+
+### 3) Deep Learning (one framework deeply, know both names)
+- `torch` (PyTorch): dominant in research and many production teams.
+- `tensorflow`/`keras`: still common in enterprise and legacy stacks.
+
+### 4) NLP and LLM App Stack (must know for GenAI roles)
+- `transformers`: model loading and inference (Hugging Face ecosystem).
+- `tokenizers`: efficient text tokenization.
+- `peft`: parameter-efficient fine-tuning (LoRA/adapters).
+- `sentence-transformers`: embedding models for retrieval.
+
+### 5) Retrieval and Vector Search
+- `faiss`: fast local vector similarity search.
+- `qdrant-client`, `weaviate-client`, `pinecone-client`: production vector DB options.
+- `rank-bm25`: keyword retrieval for hybrid search.
+
+### 6) Agent and Orchestration Layer
+- `langchain`: chains, tools, memory, and agent workflows.
+- `llama-index`: retrieval/indexing abstraction for document systems.
+
+### 7) API and Serving Layer
+- `fastapi`: model and agent serving APIs.
+- `pydantic`: request/response schema validation.
+- `uvicorn`: ASGI server for FastAPI apps.
+
+### 8) Experiment Tracking and Evaluation
+- `mlflow`, `wandb`: experiment tracking and model lineage.
+- `ragas`: RAG quality metrics.
+- `evidently`: data drift and quality monitoring.
+
+### 9) Data Quality and Pipelines
+- `great-expectations`: data validation checks.
+- `prefect` or `airflow`: workflow orchestration.
+- `dbt`: analytics transformations (SQL-first teams).
+
+### 10) Performance and Scale (learn after foundations)
+- `polars`, `duckdb`: fast local analytics.
+- `pyspark`: distributed data processing.
+- `ray`: distributed Python execution for training/inference workloads.
+
+### Suggested Learning Priority
+1. `numpy`, `pandas`, `matplotlib`, `seaborn`
+2. `scikit-learn` and baseline model evaluation
+3. `torch` and `transformers`
+4. `faiss` + one vector DB + `rank-bm25`
+5. `fastapi` + `pydantic`
+6. `mlflow`/`wandb` + `ragas` + `evidently`
+
+### Interview Signal Stack (high ROI)
+If you can ship projects with this combination, you are highly competitive:
+- `pandas` + `scikit-learn`
+- `torch` + `transformers`
+- `faiss` + `rank-bm25` + reranker
+- `fastapi` + `pydantic`
+- `mlflow`/`wandb` + eval dashboard
+
+## How To Use These Tools (Practical)
+
+This section answers: "When do I use this package, and what does a minimum real example look like?"
+
+### 1) `pandas` and `numpy` (start of every project)
+Use when: loading, cleaning, and transforming raw data.
+
+```python
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv('data/customers.csv')
+df['tenure_months'] = df['tenure_days'] / 30
+df['is_high_value'] = (df['monthly_spend'] > 100).astype(int)
+
+# Result: clean feature table for modeling
+X = df[['tenure_months', 'monthly_spend', 'is_high_value']]
+y = df['churn']
+```
+
+### 2) `scikit-learn` (baseline model quickly)
+Use when: building first model and measuring baseline metrics.
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import f1_score
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+pipe = Pipeline([
+    ('scale', StandardScaler()),
+    ('clf', LogisticRegression(max_iter=1000))
+])
+
+pipe.fit(X_train, y_train)
+pred = pipe.predict(X_test)
+print('F1:', f1_score(y_test, pred))
+```
+
+### 3) `xgboost` / `lightgbm` / `catboost` (strong tabular model)
+Use when: baseline works but you need better accuracy on structured/tabular data.
+
+```python
+from xgboost import XGBClassifier
+
+model = XGBClassifier(n_estimators=300, max_depth=6, learning_rate=0.05)
+model.fit(X_train, y_train)
+pred = model.predict(X_test)
+```
+
+### 4) `torch` (deep learning training)
+Use when: working with images, text transformers, or neural networks.
+
+```python
+import torch
+import torch.nn as nn
+
+model = nn.Sequential(
+    nn.Linear(10, 32),
+    nn.ReLU(),
+    nn.Linear(32, 2)
+)
+
+x = torch.randn(8, 10)
+logits = model(x)
+print(logits.shape)  # [8, 2]
+```
+
+### 5) `transformers` (LLM and NLP models)
+Use when: running sentiment, summarization, QA, or text generation.
+
+```python
+from transformers import pipeline
+
+summarizer = pipeline('summarization', model='facebook/bart-large-cnn')
+text = 'Long article text goes here...'
+summary = summarizer(text, max_length=80, min_length=30, do_sample=False)
+print(summary[0]['summary_text'])
+```
+
+### 6) `sentence-transformers` + `faiss` (semantic retrieval)
+Use when: building RAG search over documents.
+
+```python
+from sentence_transformers import SentenceTransformer
+import faiss
+import numpy as np
+
+docs = ['reset password guide', 'pricing and billing', 'deployment steps']
+embedder = SentenceTransformer('all-MiniLM-L6-v2')
+emb = embedder.encode(docs).astype('float32')
+
+index = faiss.IndexFlatL2(emb.shape[1])
+index.add(emb)
+
+q = embedder.encode(['how to change password']).astype('float32')
+dist, idx = index.search(q, k=2)
+print([docs[i] for i in idx[0]])
+```
+
+### 7) `rank-bm25` (keyword retrieval for hybrid search)
+Use when: vector search misses exact keywords/IDs/part numbers.
+
+```python
+from rank_bm25 import BM25Okapi
+
+tokenized_docs = [d.split() for d in docs]
+bm25 = BM25Okapi(tokenized_docs)
+scores = bm25.get_scores('password reset'.split())
+print(scores)
+```
+
+### 8) `langchain` (agent and RAG orchestration)
+Use when: connecting retriever + prompt + model + tools in one flow.
+
+```python
+from langchain_openai import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate
+
+llm = ChatOpenAI(model='gpt-4o-mini', temperature=0)
+prompt = ChatPromptTemplate.from_template('Answer clearly: {q}')
+chain = prompt | llm
+result = chain.invoke({'q': 'What is recall in ML?'})
+print(result.content)
+```
+
+### 9) `fastapi` + `pydantic` + `uvicorn` (serve model in production)
+Use when: exposing your model to web/mobile/backend apps.
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class PredictRequest(BaseModel):
+    x1: float
+    x2: float
+
+@app.post('/predict')
+def predict(req: PredictRequest):
+    score = 0.7 * req.x1 + 0.3 * req.x2
+    return {'score': score}
+
+# run: uvicorn main:app --reload
+```
+
+### 10) `mlflow` / `wandb` / `ragas` / `evidently` (prove quality)
+Use when: tracking experiments, evaluating model quality, and monitoring drift.
+
+```python
+# MLflow example
+import mlflow
+
+with mlflow.start_run():
+    mlflow.log_param('model', 'xgboost')
+    mlflow.log_metric('f1', 0.84)
+```
+
+```python
+# RAGAS is used to score RAG outputs (faithfulness, relevance, context quality)
+# Store these scores each iteration to prove your system is improving.
+```
+
+### 11) `great-expectations` / `prefect` / `airflow` (data reliability)
+Use when: moving from notebooks to scheduled, reliable pipelines.
+
+```python
+# Example concept:
+# - Great Expectations validates data schema
+# - Prefect schedules pipeline jobs
+# - Airflow orchestrates DAG workflows
+```
+
+### Practical Rule
+- Start simple: pandas + sklearn baseline.
+- Add complexity only when a metric or requirement demands it.
+- Every added tool must answer: "What problem does this solve right now?"
+
+---
+
 ## 🐼 Pandas Essentials
 
 ### Loading & Saving

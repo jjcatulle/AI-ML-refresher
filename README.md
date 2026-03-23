@@ -1,6 +1,6 @@
 # 🚀 ML/AI Learning Workspace
 
-Your personalized 6-9 month journey to AI proficiency.
+Your personalized zero-to-job-ready journey to become a production-ready AI Systems Architect.
 
 ---
 
@@ -11,14 +11,21 @@ Your personalized 6-9 month journey to AI proficiency.
 1. **[📖 SETUP_GUIDE.md](docs/SETUP_GUIDE.md)** - Complete setup instructions
    - Install Python & create virtual environment
    - Install dependencies
+   - Install popular Python ML/AI engineer stack
    - Run Jupyter notebooks
    - Troubleshooting tips
 
-2. **[🎯 HOW_TO_SOLVE_CHALLENGES.md](guides/HOW_TO_SOLVE_CHALLENGES.md)** - Learn the methodology
+2. **[🎯 HOW_TO_SOLVE_CHALLENGES.md](guides/common/HOW_TO_SOLVE_CHALLENGES.md)** - Learn the methodology
    
 3. **[📊 CHALLENGE_TRACKER.md](docs/CHALLENGE_TRACKER.md)** - Track your progress
 
-Then start with Week 1: Read `guides/GUIDE_Week1_DataExploration.md` → Open `starters/STARTER_Week1_DataExploration.ipynb`
+4. **[🧰 QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)** - Includes the popular Python ML/AI stack used in industry
+
+5. **[📏 EVALUATION_FRAMEWORK.md](docs/EVALUATION_FRAMEWORK.md)** - The scoring system for ML, RAG, and agent quality
+
+Then start with Week 1: Read `guides/phase1/GUIDE_Week1_DataExploration.md` → Open `phases/phase1/starters/STARTER_Week1_DataExploration.ipynb`
+
+If you are brand new to Python or ML, start with the deeper foundation ramp in `docs/AI-ML-LEARNING-GUIDE.md` before rushing into projects.
 
 ---
 
@@ -29,39 +36,34 @@ ML-AI-learning/
 ├── README.md                                  # This file - START HERE
 │
 ├── 📚 guides/                                 # Learning guides (read BEFORE challenges)
-│   ├── HOW_TO_SOLVE_CHALLENGES.md            # 🎯 METHODOLOGY - READ THIS!
-│   ├── GUIDE_Week1_DataExploration.md        # Concepts + approach for Week 1
-│   ├── GUIDE_Weeks4-5_ChurnPredictor.md      # Complete ML project explanation
-│   └── GUIDE_PHASE2_LLMs.md                  # (Coming next)
-│
-├── 🎯 starters/                              # Challenge notebooks (you code these!)
-│   ├── STARTER_Week1_DataExploration.ipynb
-│   │   ├── 10 challenges to solve
-│   │   ├── "YOUR CODE HERE" placeholders
-│   │   └── You write every line!
-│   │
-│   ├── STARTER_Weeks4-5_ChurnPredictor.ipynb
-│   │   ├── 12 challenges (complete ML project)
-│   │   ├── "YOUR CODE HERE" placeholders
-│   │   └── Build real model!
-│   │
-│   ├── [STARTER_Weeks6-7_HousePrice.ipynb]     # (TODO)
-│   ├── [STARTER_RAG_DocumentBot.ipynb]         # (Phase 2 - TODO)
-│   ├── [STARTER_CNN_ImageClassification.ipynb] # (Phase 3 - TODO)
-│   └── [More coming...]
+│   ├── common/
+│   │   └── HOW_TO_SOLVE_CHALLENGES.md        # 🎯 METHODOLOGY - READ THIS!
+│   ├── phase0/                               # Phase 0 guide files
+│   ├── phase1/                               # Phase 1 guide files
+│   ├── phase2/                               # Phase 2 guide files
+│   ├── phase3/                               # Phase 3 guide files
+│   └── phase4/                               # Phase 4 guide files
 │
 ├── 📖 docs/                                   # Documentation & references
 │   ├── AI-ML-LEARNING-GUIDE.md                # 16-page curriculum overview
+│   ├── EVALUATION_FRAMEWORK.md                # How to measure ML/RAG/agent quality
 │   ├── QUICK_REFERENCE.md                     # Code syntax cheat sheet
 │   ├── CHALLENGE_TRACKER.md                   # Your progress checklist
 │   └── .agent.md                              # Your AI learning agent
 │
 ├── 📁 YOUR WORK (Add here!)
-│   ├── notebooks/
-│   │   ├── phase1/                   # Your Week 1, 4-5 solutions
-│   │   ├── phase2/                   # Your LLM projects
-│   │   ├── phase3/                   # Your deep learning projects
-│   │   └── phase4/                   # Your production systems
+│   ├── phases/
+│   │   ├── phase0/
+│   │   │   └── starters/             # Foundation starter notebooks
+│   │   ├── phase1/
+│   │   │   ├── starters/             # Phase 1 starter notebooks
+│   │   │   └── MY_*.ipynb            # Your solved notebooks
+│   │   ├── phase2/
+│   │   │   └── starters/             # Phase 2 starter notebooks
+│   │   ├── phase3/
+│   │   │   └── starters/             # Phase 3 starter notebooks
+│   │   └── phase4/
+│   │       └── starters/             # Phase 4 starter notebooks
 │   │
 │   ├── data/                         # Datasets you download (keep clean!)
 │   │   ├── kaggle_churn_dataset.csv
@@ -78,6 +80,10 @@ ML-AI-learning/
 │       ├── rag_chatbot/
 │       └── image_classifier/
 │
+├── 🧪 evals/                         # Gold datasets + eval outputs (RAGAS/Judge)
+├── 🛠️ scripts/                       # Utility scripts (ETL, scraping, eval automation)
+├── 🏗️ infra/                         # Docker Compose, Vector DB, deployment configs
+│
 └── 🔧 CONFIGURATION
     ├── .venv/                        # Your Python environment
     └── requirements.txt              # (Optional - list of packages)
@@ -85,25 +91,41 @@ ML-AI-learning/
 
 ## 📋 How This Works
 
+### Choose Your Path First
+
+1. **Absolute Beginner Path**
+   - Start with the foundation ramp in `docs/AI-ML-LEARNING-GUIDE.md`
+   - Work slowly through beginner sections in guides and starters
+   - Treat the first month as skills + concepts + workflow training
+
+2. **Fast Track Path**
+   - If you already code comfortably, compress the beginner ramp
+   - Move into Week 1 and Phase 1 projects faster
+
 ### For Each Challenge Set:
 
-1. **Read HOW_TO_SOLVE_CHALLENGES.md** (in guides/)
+0. **Read EVALUATION_FRAMEWORK.md** (in docs/)
+   - Know what success metric you are optimizing
+   - Keep a baseline and failure cases
+   - Treat evals as part of the build, not cleanup at the end
+
+1. **Read HOW_TO_SOLVE_CHALLENGES.md** (in guides/common/)
    - 7-step methodology for solving ANY challenge
    - Common mistakes to avoid
    - Tips for success
 
-2. **Read the Relevant Guide** (e.g., guides/GUIDE_Week1_DataExploration.md)
+2. **Read the Relevant Guide** (e.g., guides/phase1/GUIDE_Week1_DataExploration.md)
    - Explains every concept you'll need
    - Shows example approaches (not complete code)
    - Answers "Why?" for each concept
 
-3. **Open the Starter Notebook** (e.g., starters/STARTER_Week1_DataExploration.ipynb)
+3. **Open the Starter Notebook** (e.g., phases/phase1/starters/STARTER_Week1_DataExploration.ipynb)
    - Each challenge has a description
    - Hints provided (but not solutions)
    - "YOUR CODE HERE" placeholders
    - You write every line!
 
-4. **Save Your Solutions** to notebooks/phase1/
+4. **Save Your Solutions** to phases/phase1/
    - Rename when complete: `My_Week1_DataExploration.ipynb`
    - This becomes your portfolio!
 
@@ -123,21 +145,21 @@ ML-AI-learning/
 - [x] Dev environment setup (Python 3.9.6 + 20+ libraries)
 - [x] AI/ML Learning Curriculum (16-page guide)
 - [x] Custom Learning Agent (.agent.md)
-- [x] **Challenge methodology guide** (HOW_TO_SOLVE_CHALLENGES.md)
+- [x] **Challenge methodology guide** (`guides/common/HOW_TO_SOLVE_CHALLENGES.md`)
 - [x] Phase 1, Week 1: Data Exploration Starter (10 challenges)
 - [x] Phase 1, Weeks 4-5: Churn Predictor Starter (12 challenges)
-- [x] **Learning guides** (GUIDE_Week1 + GUIDE_Weeks4-5)
+- [x] **Learning guides** (`guides/phase1/GUIDE_Week1_DataExploration.md` + `guides/phase1/GUIDE_Weeks4-5_ChurnPredictor.md`)
 - [x] Folder structure organized
 
 ### 🔄 This Week
-- [ ] **READ**: HOW_TO_SOLVE_CHALLENGES.md (methodology)
-- [ ] **READ**: GUIDE_Week1_DataExploration.md (concepts)
+- [ ] **READ**: guides/common/HOW_TO_SOLVE_CHALLENGES.md (methodology)
+- [ ] **READ**: guides/phase1/GUIDE_Week1_DataExploration.md (concepts)
 - [ ] **CODE**: Solve all 10 Week 1 challenges
-- [ ] **SAVE**: Your solutions to notebooks/phase1/
+- [ ] **SAVE**: Your solutions to phases/phase1/
 
 ### 📅 Next (Weeks 3+)
 - [ ] Create own notebook with Kaggle dataset
-- [ ] **READ**: GUIDE_Weeks4-5_ChurnPredictor.md
+- [ ] **READ**: guides/phase1/GUIDE_Weeks4-5_ChurnPredictor.md
 - [ ] **CODE**: Solve all 12 Churn Predictor challenges
 - [ ] Start Phase 2 (LLMs & RAG)
 
@@ -146,36 +168,36 @@ ML-AI-learning/
 ## 🚀 Quick Start
 
 ### Step 1: Understand the Process
-Read: **guides/HOW_TO_SOLVE_CHALLENGES.md** (15 min)
+Read: **guides/common/HOW_TO_SOLVE_CHALLENGES.md** (15 min)
 - Learn the 7-step methodology
 - Understand what each guide contains
 - See an example challenge walkthrough
 
 ### Step 2: Learn the Concepts
-Read: **guides/GUIDE_Week1_DataExploration.md** (30 min)
+Read: **guides/phase1/GUIDE_Week1_DataExploration.md** (30 min)
 - All 10 concepts explained
 - Why each matters
 - Approach for each challenge
 
 ### Step 3: Solve the Challenges
-Open: **starters/STARTER_Week1_DataExploration.ipynb**
+Open: **phases/phase1/starters/STARTER_Week1_DataExploration.ipynb**
 - Work through 10 challenges
 - Use the methodology from Step 1
 - Reference the guide from Step 2
 - Check docs/QUICK_REFERENCE.md for syntax if stuck
 
 ### Step 4: Save Your Work
-Create notebook: `notebooks/phase1/My_Solution_Week1.ipynb`
+Create notebook: `phases/phase1/My_Solution_Week1.ipynb`
 - Copy your finished notebook here
 - Rename it clearly
 - This becomes your portfolio!
 
 ### Step 5: Move to Next Challenge Set
 When Week 1 is done, start Weeks 4-5:
-- Read: GUIDE_Weeks4-5_ChurnPredictor.md
-- Open: STARTER_Weeks4-5_ChurnPredictor.ipynb
+- Read: guides/phase1/GUIDE_Weeks4-5_ChurnPredictor.md
+- Open: phases/phase1/starters/STARTER_Weeks4-5_ChurnPredictor.ipynb
 - Solve 12 challenges (complete ML project!)
-- Save to notebooks/phase1/My_Solution_ChurnPredictor.ipynb
+- Save to phases/phase1/My_Solution_ChurnPredictor.ipynb
 
 ---
 
@@ -185,19 +207,22 @@ When Week 1 is done, start Weeks 4-5:
 
 | Week | Challenge | # Challenges | Time | Output |
 |------|-----------|---|---|---|
-| **1** | Data Exploration | 10 | 4-6 hours | Your analysis on any dataset |
-| **2-3** | Practice + Kaggle | - | 6-8 hours | Real dataset analysis |
-| **4-5** | Churn Predictor | 12 | 8-12 hours | Your first ML model |
-| **6-7** | House Price (TODO) | 12 | 8-12 hours | Regression model |
-| **8** | Phase 1 Recap | - | 2-4 hours | Polish + portfolio |
+| **0** | ML 101 + Workflow | - | 3-5 hours | Concept notes + ML vocabulary |
+| **1** | Python + Jupyter + Data Exploration | 10 | 6-8 hours | Your analysis on any dataset |
+| **2** | Pandas/Charts Deep Practice | - | 6-8 hours | Data cleaning + visual explanations |
+| **3** | NumPy + Math-to-Code | - | 6-8 hours | Manual regression lab |
+| **4** | Sklearn Foundations | - | 6-8 hours | First pipeline + tiny model |
+| **5-6** | Churn Predictor | 12 | 8-12 hours | Your first ML model |
+| **7-8** | House Price | 12 | 8-12 hours | Regression model |
+| **9-10** | Phase 1 Recap | - | 2-4 hours | Polish + portfolio |
 
 ---
 
 ### ✅ Before You Start
 
-- [ ] Read HOW_TO_SOLVE_CHALLENGES.md
+- [ ] Read guides/common/HOW_TO_SOLVE_CHALLENGES.md
 - [ ] Have QUICK_REFERENCE.md open
-- [ ] Read the relevant GUIDE_*.md file
+- [ ] Read the relevant guides/phase*/GUIDE_*.md file
 - [ ] Have 1-2 hours blocked (no interruptions)
 - [ ] Have notebook and pen nearby (for notes!)
 - [ ] Ready to struggle a bit (that's learning!)
@@ -230,7 +255,7 @@ When Week 1 is done, start Weeks 4-5:
 
 ## 🧠 Learning Guides Explained
 
-### **HOW_TO_SOLVE_CHALLENGES.md** - Your Methodology
+### **guides/common/HOW_TO_SOLVE_CHALLENGES.md** - Your Methodology
 The meta-guide teaching you HOW to solve ANY challenge.
 
 **Includes**:
@@ -244,7 +269,7 @@ The meta-guide teaching you HOW to solve ANY challenge.
 
 ---
 
-### **GUIDE_Week1_DataExploration.md** - Concept Teaching
+### **guides/phase1/GUIDE_Week1_DataExploration.md** - Concept Teaching
 Teaches you the 10 concepts needed for Week 1 challenges.
 
 **Includes**:
@@ -259,7 +284,7 @@ Teaches you the 10 concepts needed for Week 1 challenges.
 
 ---
 
-### **GUIDE_Weeks4-5_ChurnPredictor.md** - Project Teaching
+### **guides/phase1/GUIDE_Weeks4-5_ChurnPredictor.md** - Project Teaching
 Teaches you how to build a complete ML project.
 
 **Includes**:
@@ -306,9 +331,9 @@ Checklist of all challenges and milestones.
 ## 🎯 The "Read First" Order
 
 1. **This README** (you're reading it!) ← You are here
-2. **guides/HOW_TO_SOLVE_CHALLENGES.md** (15 min)
-3. **guides/GUIDE_Week1_DataExploration.md** (30 min)
-4. **STARTER_Week1_DataExploration.ipynb** (solve challenges)
+2. **guides/common/HOW_TO_SOLVE_CHALLENGES.md** (15 min)
+3. **guides/phase1/GUIDE_Week1_DataExploration.md** (30 min)
+4. **phases/phase1/starters/STARTER_Week1_DataExploration.ipynb** (solve challenges)
 5. **QUICK_REFERENCE.md** (reference as needed)
 6. Repeat for next challenge set
 
@@ -341,13 +366,13 @@ Checklist of all challenges and milestones.
 ## 🆘 If You're Stuck
 
 ### Stuck Understanding a Concept?
-→ Read the relevant GUIDE_*.md file again
+→ Read the relevant guides/phase*/GUIDE_*.md file again
 
 ### Stuck on Syntax?
 → Check QUICK_REFERENCE.md for examples
 
 ### Stuck on Approach?
-→ Review HOW_TO_SOLVE_CHALLENGES.md methodology
+→ Review guides/common/HOW_TO_SOLVE_CHALLENGES.md methodology
 
 ### Stuck on an Error?
 → 1. Read the error carefully
@@ -370,7 +395,7 @@ Checklist of all challenges and milestones.
 - ✅ All 10 challenges completed
 - ✅ Your own clean code
 - ✅ You can explain each solution
-- ✅ Saved to notebooks/phase1/
+- ✅ Saved to phases/phase1/
 
 ### Week 4-5
 - ✅ All 12 challenges completed
@@ -390,13 +415,13 @@ Checklist of all challenges and milestones.
 ## 🚀 Let's Get Started!
 
 ### This Week's Quest
-- **Read**: guides/HOW_TO_SOLVE_CHALLENGES.md (15 min)
-- **Read**: guides/GUIDE_Week1_DataExploration.md (30 min)  
-- **Code**: 10 challenges in STARTER_Week1_DataExploration.ipynb (4-6 hrs)
-- **Save**: Your solutions to notebooks/phase1/
+- **Read**: guides/common/HOW_TO_SOLVE_CHALLENGES.md (15 min)
+- **Read**: guides/phase1/GUIDE_Week1_DataExploration.md (30 min)  
+- **Code**: 10 challenges in phases/phase1/starters/STARTER_Week1_DataExploration.ipynb (4-6 hrs)
+- **Save**: Your solutions to phases/phase1/
 
 ### Your First Challenge Waiting
-Open: `STARTER_Week1_DataExploration.ipynb`
+Open: `phases/phase1/starters/STARTER_Week1_DataExploration.ipynb`
 Challenge 1: Import Libraries
 
 **You've got this!** 💪

@@ -48,6 +48,65 @@ python3 --version
 
 ---
 
+## Popular Python ML/AI Packages To Install
+
+These are the most common packages used by ML/AI engineers in 2026.
+
+### Core Foundation
+```bash
+pip install numpy pandas matplotlib seaborn scikit-learn
+```
+
+### Strong Classical ML
+```bash
+pip install xgboost lightgbm catboost
+```
+
+### Deep Learning
+```bash
+pip install torch torchvision torchaudio
+pip install tensorflow
+```
+
+### NLP and LLM
+```bash
+pip install transformers tokenizers datasets sentence-transformers peft
+```
+
+### Retrieval and Vector Search
+```bash
+pip install faiss-cpu rank-bm25
+pip install qdrant-client weaviate-client pinecone-client
+```
+
+### Agentic and App Framework
+```bash
+pip install langchain llama-index fastapi uvicorn pydantic
+```
+
+### Evals, Monitoring, and Tracking
+```bash
+pip install ragas mlflow wandb evidently
+```
+
+### Data Quality and Pipelines
+```bash
+pip install great-expectations prefect dbt-core
+```
+
+### Optional Performance and Scale
+```bash
+pip install polars duckdb ray pyspark
+```
+
+### Beginner Advice
+- Install in layers, not all at once.
+- Start with foundation packages first.
+- Add advanced libraries only when a project needs them.
+- Keep your environment in `requirements.txt` for reproducibility.
+
+---
+
 ## Project Structure
 
 ```
@@ -58,18 +117,18 @@ ML-AI-learning/
 │   ├── CHALLENGE_TRACKER.md    # Progress tracker
 │   └── QUICK_REFERENCE.md      # Code cheat sheet
 ├── guides/                      # Learning materials (read these!)
-│   ├── GUIDE_Week1_DataExploration.md
-│   ├── GUIDE_Weeks4-5_ChurnPredictor.md
-│   ├── GUIDE_Weeks6-7_HousePrice.md
-│   └── ... (more guides)
-├── starters/                    # Challenge notebooks (solve these!)
-│   ├── STARTER_Week1_DataExploration.ipynb
-│   ├── STARTER_Weeks4-5_ChurnPredictor.ipynb
-│   └── ... (more notebooks)
-├── notebooks/                   # Your work folder
-│   ├── phase1-4/               # Save your solutions here
-│   ├── phase5-9/
-│   └── phase10+/
+│   ├── common/HOW_TO_SOLVE_CHALLENGES.md
+│   ├── phase0/                 # Foundation guides
+│   ├── phase1/                 # Phase 1 guides
+│   ├── phase2/                 # Phase 2 guides
+│   ├── phase3/                 # Phase 3 guides
+│   └── phase4/                 # Phase 4 guides
+├── phases/                   # Your work folder
+│   ├── phase0/starters/        # Foundation starter notebooks
+│   ├── phase1/starters/        # Phase 1 starter notebooks + your solutions
+│   ├── phase2/starters/        # Phase 2 starter notebooks
+│   ├── phase3/starters/        # Phase 3 starter notebooks
+│   └── phase4/starters/        # Phase 4 starter notebooks
 ├── data/                        # Store datasets
 ├── models/                      # Save trained models
 ├── .venv/                       # Virtual environment (created later)
@@ -169,7 +228,7 @@ jupyter lab
 This opens http://localhost:8888 in your browser.
 
 **Navigate to notebooks:**
-1. Click on `starters/` folder in left sidebar
+1. Click on `phases/phase1/starters/` folder in left sidebar
 2. Double-click any `STARTER_*.ipynb` file
 3. Notebook opens in the editor
 
@@ -183,13 +242,13 @@ jupyter notebook
 This opens http://localhost:8888 in your browser.
 
 **Navigate and open:**
-1. Navigate to `starters/` folder
+1. Navigate to `phases/phase1/starters/` folder
 2. Click on notebook name to open
 
 ### Option 3: VS Code
 
 1. Install "Jupyter" extension in VS Code
-2. Open notebook file: `File → Open → STARTER_*.ipynb`
+2. Open notebook file from a phase starter folder, for example: `File → Open → phases/phase1/starters/STARTER_Week1_DataExploration.ipynb`
 3. Notebooks open directly in editor
 
 ---
@@ -202,8 +261,8 @@ Before starting a challenge notebook:
 
 1. Read the corresponding guide:
    ```
-   Week 1: guides/GUIDE_Week1_DataExploration.md
-   Weeks 4-5: guides/GUIDE_Weeks4-5_ChurnPredictor.md
+   Week 1: guides/phase1/GUIDE_Week1_DataExploration.md
+   Weeks 4-5: guides/phase1/GUIDE_Weeks4-5_ChurnPredictor.md
    (etc.)
    ```
 
@@ -251,7 +310,7 @@ print(df.head())
 
 **Save your solution notebook:**
 ```
-File → Save As → notebooks/phase1-4/Week1_MySolution.ipynb
+File → Save As → phases/phase1-4/Week1_MySolution.ipynb
 ```
 
 This preserves your work and keeps starters clean.
@@ -275,7 +334,7 @@ This preserves your work and keeps starters clean.
    ```
 
 3. **Open notebook:**
-   - Click `starters/STARTER_Week1_DataExploration.ipynb`
+   - Click `phases/phase1/starters/STARTER_Week1_DataExploration.ipynb`
 
 4. **Read first challenge**
 
@@ -369,8 +428,8 @@ pip install -r requirements.txt --verbose
 ## Next Steps
 
 1. ✅ Complete setup (this guide)
-2. 📖 Read Week 1 guide: `guides/GUIDE_Week1_DataExploration.md`
-3. 📓 Open notebook: `starters/STARTER_Week1_DataExploration.ipynb`
+2. 📖 Read Week 1 guide: `guides/phase1/GUIDE_Week1_DataExploration.md`
+3. 📓 Open notebook: `phases/phase1/starters/STARTER_Week1_DataExploration.ipynb`
 4. 💻 Solve challenges 1-12
 5. 📊 Progress tracker: `docs/CHALLENGE_TRACKER.md`
 
@@ -380,7 +439,7 @@ pip install -r requirements.txt --verbose
 
 If stuck:
 
-1. **Check the guide** - `guides/GUIDE_*.md` has concepts and examples
+1. **Check the guide** - `guides/phase*/GUIDE_*.md` has concepts and examples
 2. **Read error messages** - They tell you what's wrong
 3. **Google the error** - Most Python errors are documented online
 4. **Try a simpler version** - Break down complex problems
