@@ -214,7 +214,7 @@ When Week 1 is done, start Weeks 4-5:
 | **4** | Sklearn Foundations | - | 6-8 hours | First pipeline + tiny model |
 | **5-6** | Churn Predictor | 12 | 8-12 hours | Your first ML model |
 | **7-8** | House Price | 12 | 8-12 hours | Regression model |
-| **9-10** | Phase 1 Recap | - | 2-4 hours | Polish + portfolio |
+| **9-10** | Fraud Detection | 12 | 8-12 hours | Imbalanced classification model |
 
 ---
 
@@ -244,7 +244,7 @@ When Week 1 is done, start Weeks 4-5:
 ### Phase 3: Deep Learning
 - 🎓 Fast.ai Part 1 (40 hrs, free)
 - 📚 PyTorch tutorials
-- 🧠 Build CNN, LSTM, Transformers from scratch
+- 🧠 Build CNN, LSTM, Transformers, and multimodal retrieval prototypes
 
 ### Phase 4: MLOps
 - 🎓 Full Stack Deep Learning (16 hrs, free)

@@ -2,11 +2,11 @@
 
 Your 6-9 month journey from learner to ML engineer - with YOU doing all the coding!
 
-**Total**: 39 weeks | 168+ challenges | 200+ hours of learning
+**Total**: 39 weeks | 192+ challenges | 200+ hours of learning
 
 ---
 
-## PHASE 1: ML & Data Science Fundamentals (Weeks 1-8)
+## PHASE 1: ML & Data Science Fundamentals (Weeks 1-10)
 
 ### ✅ Week 1: Data Exploration (10 Challenges)
 **Guide**: `../guides/phase1/GUIDE_Week1_DataExploration.md`  
@@ -79,7 +79,29 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 
 ---
 
-### ✅ Week 8: Phase 1 Review
+### Weeks 8-9: Fraud Detection Risk Scorer (12 Challenges)
+**Guide**: `../guides/phase1/GUIDE_Weeks8-9_FraudDetection.md`  
+**Starter**: `../phases/phase1/starters/STARTER_Weeks8-9_FraudDetection.ipynb`  
+**Time**: 8-12 hours
+
+- [ ] Challenge 1: Load transaction dataset and profile class imbalance
+- [ ] Challenge 2: Build leakage checks and proper train/validation split
+- [ ] Challenge 3: Baseline model and naive threshold
+- [ ] Challenge 4: Compute precision, recall, F1, ROC-AUC, PR-AUC
+- [ ] Challenge 5: Threshold sweep and cost-aware operating point
+- [ ] Challenge 6: Confusion matrix analysis by threshold
+- [ ] Challenge 7: Class-weight vs resampling comparison
+- [ ] Challenge 8: Feature importance and error slice analysis
+- [ ] Challenge 9: Probability calibration and reliability curve
+- [ ] Challenge 10: Top-risk ranking evaluation (precision@k)
+- [ ] Challenge 11: Risk scoring inference function
+- [ ] Challenge 12: Fraud operations summary and deployment notes
+
+**Save to**: `../phases/phase1/My_FraudRiskScorer.ipynb`
+
+---
+
+### ✅ Week 10: Phase 1 Review
 - [ ] Compare all 3 projects
 - [ ] Polish best for portfolio
 - [ ] Write reflection
@@ -174,9 +196,53 @@ Your 6-9 month journey from learner to ML engineer - with YOU doing all the codi
 
 ---
 
-### Weeks 23-26: Advanced Deep Learning (16 Challenges) *(to create)*
+### Weeks 23-24: Advanced Deep Learning (16 Challenges) *(to create)*
 **Guide**: `../guides/phase3/GUIDE_Weeks23-26_AdvancedDL.md` *(to create)*  
 **Time**: 20-24 hours
+
+---
+
+### Weeks 23-24 (Optional): Neural Net from Scratch or Mini ChatGPT Clone (12 Challenges)
+**Guide**: `../guides/phase3/GUIDE_Weeks23-24_NeuralNet_or_ChatClone.md`  
+**Starter**: `../phases/phase3/starters/STARTER_Weeks23-24_NeuralNet_or_ChatClone.ipynb`  
+**Time**: 12-16 hours
+
+- [ ] Challenge 1: Pick track (A: NumPy MLP, B: Mini ChatGPT clone)
+- [ ] Challenge 2: Data/token pipeline setup
+- [ ] Challenge 3: Build core model architecture
+- [ ] Challenge 4: Implement loss and optimization step
+- [ ] Challenge 5: Train baseline model and log loss
+- [ ] Challenge 6: Add validation loop and overfitting checks
+- [ ] Challenge 7: Improve architecture (depth/heads/hidden size)
+- [ ] Challenge 8: Add regularization or stabilization (dropout/clip/lr schedule)
+- [ ] Challenge 9: Build inference function (predict or generate)
+- [ ] Challenge 10: Compare baseline vs improved variant
+- [ ] Challenge 11: Error analysis and failure examples
+- [ ] Challenge 12: Technical write-up and lessons learned
+
+**Save to**: `../phases/phase3/My_NeuralNet_or_ChatClone.ipynb`
+
+---
+
+### Weeks 25-26: Multimodal RAG Prototype (12 Challenges)
+**Guide**: `../guides/phase3/GUIDE_Weeks25-26_MultimodalRAG.md`  
+**Starter**: `../phases/phase3/starters/STARTER_Weeks25-26_MultimodalRAG.ipynb`  
+**Time**: 12-16 hours
+
+- [ ] Challenge 1: Build multimodal dataset (text + image/table references)
+- [ ] Challenge 2: Extract captions/metadata for non-text assets
+- [ ] Challenge 3: Chunk and index textual context
+- [ ] Challenge 4: Index image/table descriptors
+- [ ] Challenge 5: Build hybrid retrieval (keyword + semantic)
+- [ ] Challenge 6: Add reranking for mixed context candidates
+- [ ] Challenge 7: Construct grounded prompt with citations
+- [ ] Challenge 8: Evaluate retrieval quality (recall@k)
+- [ ] Challenge 9: Evaluate answer quality (faithfulness/relevance)
+- [ ] Challenge 10: Analyze failure cases and hallucination patterns
+- [ ] Challenge 11: Optimize latency/cost with selective retrieval
+- [ ] Challenge 12: Write technical summary + next iteration plan
+
+**Save to**: `../phases/phase3/My_MultimodalRAG.ipynb`
 
 ---
 

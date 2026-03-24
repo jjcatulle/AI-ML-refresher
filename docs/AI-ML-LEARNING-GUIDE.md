@@ -158,7 +158,7 @@ By end of Phase 0, you will:
 
 ---
 
-## 📚 PHASE 1: ML FUNDAMENTALS (Weeks 1-8, Months 1-2)
+## 📚 PHASE 1: ML FUNDAMENTALS (Weeks 1-10, Months 1-2)
 **"Get Comfortable with Data & Models"**
 
 ### Learning Outcomes
@@ -198,7 +198,7 @@ By end of Phase 1, you will:
 | 4 | Scikit-learn intro, train/test split, preprocessing, pipelines | Prepare end-to-end data pipeline |
 | 5-6 | Classification models, thresholds, confusion matrix, ROC, PR, feature importance | **Project: Customer Churn Predictor** |
 | 7-8 | Regression, feature engineering, residuals, comparison across models | **Project: House Price Predictor** |
-| 9-10 | Hyperparameter tuning, cross-validation, model selection | Review, optimize, and publish polished Phase 1 project |
+| 9-10 | Imbalanced classification, anomaly detection, calibration, threshold tuning | **Project: Fraud Detection Risk Scorer** |
 
 ### Hands-On Projects
 
@@ -223,6 +223,18 @@ By end of Phase 1, you will:
   - Comparison chart showing RMSE/R² by model
   - Prediction API (simple function)
 - **Key Learnings**: Feature engineering, regression metrics, model comparison
+
+#### Project 1.3: Fraud Detection Risk Scorer (Weeks 9-10)
+**Goal**: Detect fraudulent transactions in an imbalanced dataset
+- **Dataset**: Credit card fraud dataset (Kaggle) or synthetic imbalanced transactions
+- **Tech Stack**: Scikit-learn, Pandas, Matplotlib, Seaborn
+- **Deliverables**:
+  - Imbalance-aware preprocessing notebook
+  - Baseline and tuned models (Logistic Regression, Random Forest, XGBoost or HistGradientBoosting)
+  - Metric comparison focused on Precision/Recall, PR-AUC, and threshold trade-offs
+  - Calibration and threshold-selection report for business costs
+  - Inference function returning risk score and fraud flag
+- **Key Learnings**: Class imbalance handling, threshold tuning, PR-focused evaluation, calibration
 
 ### Required Skills by End of Phase 1
 ```
@@ -523,6 +535,7 @@ By end of Phase 3, you will:
 | 19-20 | CNNs, convolution intuition, pooling | **Project: Image Classification** (Part 1) |
 | 21-22 | Transfer learning, fine-tuning pre-trained models | **Project: Image Classification** (Part 2) |
 | 23-24 | Attention-first sequence modeling, transformer fine-tuning | **Project: Sentiment Analysis (Transformer-first)** |
+| 23-24 (Optional) | Neural network internals or decoder-only transformer build | **Project: Neural Net from Scratch or Mini ChatGPT Clone** |
 | 25-26 | Multimodal retrieval and context engineering | **Project: Multimodal RAG Prototype** |
 
 ### Hands-On Projects
@@ -580,6 +593,44 @@ By end of Phase 3, you will:
   - Visualization: actual vs. predicted
   - Error analysis (MAE, RMSE)
   - Deployed API
+
+#### Project 3.4: Multimodal RAG Prototype (Weeks 25-26)
+**Goal**: Build a retrieval system that answers questions using text plus image/table context
+- **Dataset**: Technical docs with diagrams/tables (PDFs, markdown, screenshots)
+- **Architecture**: Hybrid multimodal retrieval + LLM generation
+- **Steps**:
+  - Extract text and metadata from documents
+  - Index text chunks and image/table captions
+  - Build multimodal retrieval flow (text query to mixed context)
+  - Generate grounded answers with citations
+  - Evaluate retrieval recall and answer faithfulness
+- **Deliverables**:
+  - Multimodal ingestion pipeline
+  - Retriever with text + image/table references
+  - QA demo notebook/app
+  - Evaluation report (recall@k, faithfulness, citation correctness)
+  - Cost/latency optimization notes
+- **Key Learnings**: Multimodal context engineering, retrieval quality evaluation, grounded generation
+
+#### Project 3.5 (Optional): Neural Network from Scratch or Mini ChatGPT Clone (Weeks 23-24)
+**Goal**: Deeply understand model internals by implementing one of two build tracks
+
+**Track A: Neural Network from Scratch (NumPy MLP)**
+- Build forward pass, backpropagation, and gradient updates manually
+- Train on MNIST or a toy classification dataset
+- Compare learning behavior to a PyTorch equivalent
+
+**Track B: Mini ChatGPT Clone (Decoder-Only Transformer)**
+- Build a tiny decoder-only language model on a small text corpus
+- Implement tokenization, causal masking, training loop, and text generation
+- Add a minimal chat interface and prompt memory window
+
+- **Deliverables**:
+  - End-to-end training notebook/code
+  - Loss curves and evaluation summary
+  - Inference demo (classification or text generation)
+  - "What I learned" architecture comparison notes
+- **Key Learnings**: Neural network internals, transformer mechanics, generation behavior, debugging training dynamics
 
 ### PyTorch Essentials
 ```python
@@ -939,7 +990,7 @@ Month 5 (Weeks 17-20)
 Month 6 (Weeks 21-24)
 ├─ Week 21-22: Transfer learning, fine-tuning
 ├─ Week 23-24: Sentiment analysis with LSTM
-└─ ✅ Milestone: 3+ deep learning models trained
+└─ ✅ Milestone: 4+ deep learning projects completed
 
 Month 7 (Weeks 25-28)
 ├─ Week 25-26: Time series forecasting
@@ -975,11 +1026,11 @@ Buffer (Weeks 37-39)
 - [ ] Phase 4: I can run shadow mode and compare old/new systems before full rollout
 
 ### Technical Milestones (Track Progress)
-- [ ] Phase 1: Ship 2 ML projects (Churn, Housing)
+- [ ] Phase 1: Ship 3 ML projects (Churn, Housing, Fraud)
 - [ ] Phase 2: Ship 1 production LLM app (RAG)
-- [ ] Phase 3: Ship 3 deep learning models (CNN, LSTM, Forecasting)
+- [ ] Phase 3: Ship 4 deep learning projects (CNN, Sentiment, Forecasting, Multimodal)
 - [ ] Phase 4: Productionize all models with monitoring
-- [ ] **Total: 8+ projects shipped to production**
+- [ ] **Total: 10+ projects shipped to production**
 
 ### Knowledge Milestones
 - [ ] Understand ML pipeline end-to-end
