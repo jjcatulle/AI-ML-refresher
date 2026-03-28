@@ -2,6 +2,18 @@
 
 Keep this handy while you code!
 
+## Quick Navigation
+
+Use this file in this order when building projects:
+1. [Tool stack and minimum practical usage](#part-1-tooling-overview)
+2. [Model and metric selection guides](#part-2-decision-guides)
+3. [Core data work: pandas, NumPy, visualization](#part-3-core-data-work)
+4. [Classical ML workflow, models, and evaluation](#part-4-classical-ml-workflow)
+5. [Deep learning, RAG, serving, and Docker](#part-5-deep-learning-llms-and-serving)
+6. [Common patterns, debugging, and stuck-state recovery](#part-6-operations-and-troubleshooting)
+
+## Part 1: Tooling Overview
+
 ---
 
 ## Popular Python ML/AI Engineer Stack (2026)
@@ -256,6 +268,442 @@ Use when: moving from notebooks to scheduled, reliable pipelines.
 
 ---
 
+## Part 2: Decision Guides
+
+## 🧠 Explaining Model Selection
+
+This section answers: "How do I choose the right model instead of guessing?"
+
+### Start With These Questions
+1. Is this classification, regression, clustering, ranking, generation, or retrieval?
+2. Is the data tabular, text, image, audio, or time series?
+3. Do I need interpretability, or is raw performance more important?
+4. Is the dataset small, medium, or large?
+5. What kind of mistakes are most expensive?
+6. Do I need fast inference or real-time prediction?
+
+### Default Model Choice by Problem Type
+
+#### Tabular Classification
+Start with:
+- Logistic Regression for a simple baseline
+- Random Forest for a strong non-linear baseline
+- XGBoost/LightGBM/CatBoost when you need stronger performance
+
+Use Logistic Regression when:
+- You want a fast baseline
+- You need coefficients and simpler explanation
+- The dataset is not extremely complex
+
+Use tree-based models when:
+- Relationships are non-linear
+- Feature interactions matter
+- You have mixed numeric/categorical patterns
+
+Rule of thumb:
+- Baseline: Logistic Regression
+- Stronger next step: Random Forest
+- High-performance tabular work: XGBoost/LightGBM/CatBoost
+
+#### Tabular Regression
+Start with:
+- Linear Regression or Ridge
+- Random Forest Regressor
+- Gradient boosting if simple linear models underperform
+
+Use linear models when:
+- You want a simple benchmark
+- Interpretability matters
+- The signal is roughly additive or linear
+
+Use tree/boosting regressors when:
+- Effects are non-linear
+- There are many interactions
+- You care more about predictive performance than coefficient interpretation
+
+#### Text Classification / NLP
+Start with:
+- TF-IDF + Logistic Regression for a cheap, strong baseline
+- Transformer models when task complexity is higher
+
+Use TF-IDF + linear model when:
+- You need a quick text baseline
+- Dataset is moderate and labels are clean
+- Compute budget is limited
+
+Use transformers when:
+- Context, semantics, and nuance matter
+- The task depends on meaning more than keywords
+- You can afford heavier inference/training cost
+
+#### Image Tasks
+Start with:
+- Transfer learning using pretrained CNN or ViT models
+
+Do not start by training from scratch unless:
+- You have a very large dataset
+- You have a strong reason to avoid pretrained models
+
+#### Time Series / Forecasting
+Start with:
+- Naive baseline (last value, rolling mean)
+- Tree-based models with lag features for practical forecasting
+- Specialized forecasting models only when needed
+
+Key rule:
+- Respect time order. Never random-shuffle time series in a way that leaks the future.
+
+#### Clustering / Unsupervised Work
+Start with:
+- KMeans for simple segmentation
+- DBSCAN when cluster shape/noise matters
+- PCA/UMAP for dimensionality reduction before visualization
+
+### Selection by Constraint
+
+#### If you need interpretability
+Prefer:
+- Logistic Regression
+- Linear Regression / Ridge
+- Small Decision Tree
+
+Why:
+- Easier to explain feature influence
+- Better for audits and business communication
+
+#### If you need strongest tabular performance
+Prefer:
+- XGBoost
+- LightGBM
+- CatBoost
+
+Why:
+- These are often top performers on structured data
+- They capture non-linear patterns and interactions well
+
+#### If you need fast training and baseline iteration
+Prefer:
+- Logistic Regression
+- Linear models
+- Small Random Forest
+
+Why:
+- Faster feedback loop
+- Easier to debug pipeline issues before tuning advanced models
+
+#### If you have very little data
+Prefer:
+- Simpler models first
+- Strong regularization
+- Careful cross-validation
+
+Why:
+- Complex models can overfit small datasets quickly
+
+#### If you have lots of text, image, or audio data
+Prefer:
+- Pretrained deep learning models
+- Fine-tuning rather than training from scratch
+
+### Fast Selection Cheat Sheet
+
+| Situation | Example | Good first model | Good next model |
+|---|---|---|---|
+| Binary classification, tabular | Customer churn, fraud yes/no, loan default | Logistic Regression | Random Forest / XGBoost |
+| Multi-class tabular | Support ticket category, product type prediction | Logistic Regression / Random Forest | XGBoost / CatBoost |
+| Numeric prediction | House prices, sales amount, delivery time | Linear Regression / Ridge | Random Forest Regressor / XGBoost |
+| Text classification | Spam detection, sentiment analysis, ticket routing | TF-IDF + Logistic Regression | Transformers |
+| Image classification | Product photos, defect detection, animal species | Pretrained CNN/ViT | Fine-tuned stronger pretrained model |
+| Retrieval / RAG | Help-center search, internal docs assistant, policy lookup | BM25 baseline + embeddings | Hybrid retrieval + reranker |
+
+### What Usually Goes Wrong
+- Picking a complex model before building a baseline
+- Choosing by popularity instead of problem type
+- Using accuracy only on imbalanced classification
+- Comparing models without keeping preprocessing consistent
+- Tuning models before checking data quality and leakage
+
+### A Good Practical Workflow
+1. Build the simplest valid baseline.
+2. Evaluate against the right metric.
+3. Identify the failure mode.
+4. Pick the next model based on that failure mode.
+5. Change one major thing at a time.
+
+Example:
+- If Logistic Regression underfits tabular data, try Random Forest.
+- If Random Forest is better but still misses complex interactions, try XGBoost.
+- If text keywords work but meaning is missed, move from TF-IDF to transformers.
+
+### Decision Rule
+- Simple data + need explanation: start linear.
+- Structured/tabular data + need strong performance: use boosted trees.
+- Unstructured text/image/audio: start with pretrained deep models.
+- Small data or early exploration: use the simplest model that gives a valid baseline.
+
+### Example Scenarios
+
+#### Scenario 1: Customer churn prediction from CSV data
+- Data type: tabular
+- Problem: binary classification
+- Good first model: Logistic Regression
+- Good next model: Random Forest or XGBoost
+- Why: churn data is structured, and important patterns often come from interactions across tenure, contract type, and price
+
+#### Scenario 2: House price prediction
+- Data type: tabular
+- Problem: regression
+- Good first model: Linear Regression or Ridge
+- Good next model: Random Forest Regressor or XGBoost Regressor
+- Why: linear models create a clear benchmark, while tree models usually capture non-linear effects better
+
+#### Scenario 3: Spam detection from email text
+- Data type: text
+- Problem: classification
+- Good first model: TF-IDF + Logistic Regression
+- Good next model: Transformer classifier
+- Why: keywords often give a strong baseline, but transformers help when meaning and phrasing matter more
+
+#### Scenario 4: Product image classification
+- Data type: images
+- Problem: classification
+- Good first model: pretrained vision model
+- Good next model: stronger fine-tuned pretrained model
+- Why: transfer learning is usually far more efficient than training from scratch
+
+#### Scenario 5: Support chatbot retrieval
+- Data type: text documents
+- Problem: retrieval/ranking
+- Good first system: BM25 + embedding search baseline
+- Good next system: hybrid retrieval + reranker
+- Why: exact keyword match and semantic similarity both matter in real support systems
+
+---
+
+## 📏 Explaining Metric Selection
+
+This section answers: "How do I choose the metric that actually matches the goal?"
+
+### Start With These Questions
+1. What mistake is most expensive?
+2. Are classes balanced or imbalanced?
+3. Is the output a yes/no decision, a ranking, or a numeric value?
+4. Will people act directly on the prediction?
+5. Do large errors need extra penalty?
+
+### Classification Metrics
+
+#### Accuracy
+Use when:
+- Classes are reasonably balanced
+- False positives and false negatives have similar cost
+
+Avoid when:
+- The positive class is rare
+
+Example:
+- A churn dataset with 95% non-churn can produce high accuracy with a useless model
+
+#### Precision
+Use when:
+- False positives are expensive
+- You want high-confidence positive predictions
+
+Example scenarios:
+- Fraud alerts that trigger manual review
+- Sales outreach where bad leads waste team time
+
+#### Recall
+Use when:
+- False negatives are expensive
+- Missing positives is worse than reviewing extra cases
+
+Example scenarios:
+- Churn prevention
+- Disease screening
+- Safety issue detection
+
+#### F1 Score
+Use when:
+- Precision and recall both matter
+- The dataset is imbalanced
+
+Example scenario:
+- Spam filtering where both missed spam and blocked real email matter
+
+#### ROC-AUC
+Use when:
+- You want to compare ranking quality across thresholds
+- The class split is not extremely skewed
+
+#### PR-AUC
+Use when:
+- The positive class is rare
+- You care about the quality of positive-case retrieval
+
+### Regression Metrics
+
+#### MAE
+Use when:
+- You want average error in original units
+- Large misses should not dominate the score too much
+
+Example:
+- Delivery time prediction in minutes
+
+#### RMSE
+Use when:
+- Large errors should be penalized more heavily
+- Big misses are especially painful
+
+Example:
+- Demand forecasting where large misses create inventory problems
+
+#### R-squared
+Use when:
+- You want a high-level measure of explained variance
+
+Do not use alone:
+- It can look good while actual prediction error is still too large to be useful
+
+### Retrieval / RAG Metrics
+
+Use:
+- Recall@k when missing relevant documents is costly
+- Precision@k when showing irrelevant documents is costly
+- Faithfulness/groundedness when answer correctness depends on retrieved evidence
+
+### Fast Metric Selection Cheat Sheet
+
+| Situation | Primary metric | Why |
+|---|---|---|
+| Balanced classification | Accuracy or F1 | Reasonable when classes are not heavily skewed |
+| Imbalanced classification | Recall, Precision, F1, PR-AUC | Accuracy can be misleading |
+| Churn prediction | Recall or F1 | Missing likely churners is costly |
+| Fraud detection | Precision and Recall | Both misses and false alarms matter |
+| Forecasting numeric value | MAE or RMSE | Use original-unit error or stronger penalty for large misses |
+| Retrieval / RAG | Recall@k, Precision@k, groundedness | Need correct retrieval and supported answers |
+
+### Example Metric Scenarios
+
+#### Scenario 1: Churn model
+- Business goal: catch at-risk customers
+- Best starting metric: recall
+- Supporting metric: precision
+- Why: missing churners is usually worse than reviewing too many customers
+
+#### Scenario 2: Fraud alerts
+- Business goal: detect fraud without overwhelming investigators
+- Best starting metric: precision and recall together
+- Supporting metric: PR-AUC
+- Why: both missed fraud and too many false alerts are expensive
+
+#### Scenario 3: House price prediction
+- Business goal: estimate sale price accurately
+- Best starting metric: MAE
+- Supporting metric: RMSE
+- Why: MAE is easy to explain in dollars, while RMSE highlights very large misses
+
+#### Scenario 4: Search over help-center docs
+- Business goal: retrieve the right documents in top results
+- Best starting metric: Recall@k
+- Supporting metric: Precision@k
+- Why: first make sure the correct document appears, then improve ranking quality
+
+### Metric Selection Mistakes
+- Using accuracy for highly imbalanced problems
+- Reporting only one metric when tradeoffs matter
+- Ignoring threshold tuning for probabilistic classifiers
+- Comparing metrics across different datasets or different splits
+- Optimizing a metric that does not match the real business action
+
+### Decision Rule
+- If missing positives is worst, optimize recall.
+- If false alarms are worst, optimize precision.
+- If both matter, use F1 or track precision and recall together.
+- If outputs are ranked, include AUC or ranking metrics.
+- If prediction is numeric, start with MAE and add RMSE when large misses matter.
+
+---
+
+## 🧭 Problem-Type Mini Recipes
+
+Use these when you want a fast default workflow for a common project type.
+
+### 1) Tabular Classification Recipe
+- Examples: churn, fraud, loan default, spam labels in a CSV
+- Start with: train/test split, preprocessing pipeline, Logistic Regression baseline
+- Next model: Random Forest or XGBoost
+- Primary metrics: recall, precision, F1, PR-AUC depending on class balance and error cost
+- Common risks: leakage, imbalance, inconsistent category handling
+
+Recommended flow:
+1. Clean target and fix data types.
+2. Split before fitting preprocessing.
+3. Build a pipeline with imputation and encoding.
+4. Train Logistic Regression baseline.
+5. Compare with Random Forest or XGBoost.
+6. Tune threshold if business action depends on recall/precision tradeoff.
+
+### 2) Tabular Regression Recipe
+- Examples: house prices, sales forecasting, delivery time prediction
+- Start with: Linear Regression or Ridge
+- Next model: Random Forest Regressor or XGBoost Regressor
+- Primary metrics: MAE first, RMSE second
+- Common risks: skewed targets, leakage from future information, outliers dominating error
+
+Recommended flow:
+1. Check target distribution and outliers.
+2. Build a preprocessing pipeline.
+3. Train linear baseline.
+4. Compare with non-linear regressor.
+5. Review large-error cases, not only average score.
+
+### 3) Text Classification Recipe
+- Examples: sentiment, spam, support ticket routing
+- Start with: TF-IDF + Logistic Regression
+- Next model: transformer classifier
+- Primary metrics: F1, recall, precision depending on the operational goal
+- Common risks: label noise, class imbalance, text leakage from metadata
+
+Recommended flow:
+1. Clean obvious null and duplicate text records.
+2. Build TF-IDF baseline.
+3. Review error examples by reading actual text.
+4. Move to transformer only if baseline misses semantic meaning.
+
+### 4) Retrieval / RAG Recipe
+- Examples: internal docs assistant, support search, knowledge-grounded chatbot
+- Start with: BM25 baseline plus embedding search
+- Next system: hybrid retrieval with reranker
+- Primary metrics: Recall@k, Precision@k, groundedness/faithfulness
+- Common risks: poor chunking, weak metadata filters, hallucination without source support
+
+Recommended flow:
+1. Start with a small gold query set.
+2. Test keyword and semantic retrieval separately.
+3. Combine them into hybrid retrieval.
+4. Add reranking only after retrieval coverage is acceptable.
+5. Evaluate answers against sources, not style alone.
+
+### 5) Image Classification Recipe
+- Examples: product photos, defect detection, animal species classification
+- Start with: pretrained CNN or ViT
+- Next model: fine-tuned stronger pretrained backbone
+- Primary metrics: accuracy for balanced datasets, recall/precision/F1 when class costs differ
+- Common risks: too little data, label quality issues, train/validation leakage through near-duplicate images
+
+Recommended flow:
+1. Inspect class balance and label quality.
+2. Use transfer learning first.
+3. Add augmentation carefully.
+4. Review confusion matrix by class.
+5. Investigate failure images, not just scores.
+
+---
+
+## Part 3: Core Data Work
+
 ## 🐼 Pandas Essentials
 
 ### Loading & Saving
@@ -295,6 +743,77 @@ df.drop_duplicates()         # Remove duplicates
 
 # Data types
 df['col'] = df['col'].astype(float)
+```
+
+### Transforming and Fixing Data Types (Very Common)
+```python
+# 1) Inspect object columns before conversion
+obj_cols = df.select_dtypes(include=['object']).columns
+for c in obj_cols:
+    print(c, 'unique:', df[c].nunique(dropna=False))
+
+# 2) Clean raw strings first (strip spaces, normalize case)
+df['city'] = (
+    df['city']
+    .astype('string')
+    .str.strip()
+    .str.lower()
+)
+
+# 3) Convert numeric-like strings safely
+# Bad values become NaN instead of crashing
+df['monthly_charges'] = pd.to_numeric(df['monthly_charges'], errors='coerce')
+
+# 4) Parse datetime safely
+df['signup_date'] = pd.to_datetime(df['signup_date'], errors='coerce', utc=True)
+
+# 5) Convert low-cardinality text columns to category
+# Great for memory + clearer semantics
+cat_candidates = ['contract_type', 'payment_method', 'internet_service']
+for c in cat_candidates:
+    if c in df.columns:
+        df[c] = df[c].astype('category')
+
+# 6) Optional: set an explicit category order when business logic needs it
+if 'risk_level' in df.columns:
+    df['risk_level'] = pd.Categorical(
+        df['risk_level'],
+        categories=['low', 'medium', 'high'],
+        ordered=True
+    )
+
+# 7) Fix common placeholders that should be missing values
+df = df.replace({'': pd.NA, 'NA': pd.NA, 'N/A': pd.NA, 'unknown': pd.NA})
+
+# 8) Basic consistency check after transformations
+print(df.dtypes)
+print(df[['monthly_charges', 'signup_date']].head())
+```
+
+When to use `category`:
+- Good for columns with repeated labels and relatively low unique values (plan type, region, status).
+- Avoid converting free-text columns (comments, descriptions) to category.
+- For ML: use encoding (like OneHotEncoder) in a pipeline rather than manual integer coding.
+
+Quick pattern for training prep:
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+
+num_cols = df.select_dtypes(include=['number']).columns.tolist()
+cat_cols = df.select_dtypes(include=['category', 'object', 'string']).columns.tolist()
+
+preprocessor = ColumnTransformer([
+    ('num', Pipeline([
+        ('imputer', SimpleImputer(strategy='median'))
+    ]), num_cols),
+    ('cat', Pipeline([
+        ('imputer', SimpleImputer(strategy='most_frequent')),
+        ('onehot', OneHotEncoder(handle_unknown='ignore'))
+    ]), cat_cols)
+])
 ```
 
 ### Selection & Filtering
@@ -373,34 +892,58 @@ sns.scatterplot(data=df, x='x', y='y', hue='category')
 
 ---
 
+## Part 4: Classical ML Workflow
+
 ## 🤖 Scikit-learn Workflow
 
 ```python
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
 
-# 1. Split data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# 1. Split data before fitting preprocessing
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
 
-# 2. Scale features (optional but recommended)
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+# 2. Separate numeric and categorical columns
+num_cols = X_train.select_dtypes(include=['number']).columns.tolist()
+cat_cols = X_train.select_dtypes(exclude=['number']).columns.tolist()
 
-# 3. Train model
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+# 3. Build preprocessing + model in one pipeline
+preprocessor = ColumnTransformer([
+    ('num', Pipeline([
+        ('imputer', SimpleImputer(strategy='median')),
+        ('scaler', StandardScaler())
+    ]), num_cols),
+    ('cat', Pipeline([
+        ('imputer', SimpleImputer(strategy='most_frequent')),
+        ('onehot', OneHotEncoder(handle_unknown='ignore'))
+    ]), cat_cols),
+])
+
+model = Pipeline([
+    ('prep', preprocessor),
+    ('clf', LogisticRegression(max_iter=1000))
+])
+
 model.fit(X_train, y_train)
 
 # 4. Make predictions
-y_pred = model.predict(X_test)
-y_pred_proba = model.predict_proba(X_test)
+pred = model.predict(X_test)
 
 # 5. Evaluate
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy:.4f}")
+print(classification_report(y_test, pred))
 ```
+
+Best default pattern:
+- Use a `Pipeline` so preprocessing is identical in train, test, and inference.
+- Split before fitting transformations.
+- Start with Logistic Regression for a baseline, then replace only the final estimator when comparing models.
 
 ---
 
@@ -491,6 +1034,29 @@ r2 = r2_score(y_test, y_pred)                      # Explained variance (0-1)
 
 ## 🔄 Cross-Validation & Hyperparameter Tuning
 
+Use [HYPERPARAMETER_TUNING_GUIDE.md](/Users/jjcatulle/Desktop/ML-AI-learning/docs/HYPERPARAMETER_TUNING_GUIDE.md) for the full explanation-first version.
+
+### What tuning actually means
+- Tuning means changing model or system settings on purpose, then comparing results with a validation process.
+- You tune after you have a valid baseline, not before.
+- You do not tune on the test set repeatedly.
+- You should tune the settings most connected to the current failure mode.
+
+Examples:
+- Churn model missing positives: tune threshold or `class_weight` first.
+- House price model making large misses: tune regularization or tree depth.
+- RAG bot missing the right source: tune chunking and retrieval before prompt wording.
+
+### Cross-Validation
+Use when:
+- one random split may be too noisy
+- dataset is not huge
+- you want a more stable comparison between settings
+
+Why it helps:
+- it reduces luck from one split
+- it gives a more honest average score across folds
+
 ### Cross-Validation
 ```python
 from sklearn.model_selection import cross_val_score
@@ -498,6 +1064,15 @@ from sklearn.model_selection import cross_val_score
 scores = cross_val_score(model, X, y, cv=5, scoring='accuracy')
 print(f"Mean: {scores.mean():.4f}, Std: {scores.std():.4f}")
 ```
+
+### Grid Search
+Use when:
+- you have a small, clear parameter space
+- you want a simple and reproducible search
+
+Watch out for:
+- too many combinations
+- searching before you know what behavior you are trying to improve
 
 ### Grid Search
 ```python
@@ -515,7 +1090,17 @@ print(f"Best params: {grid_search.best_params_}")
 print(f"Best score: {grid_search.best_score_:.4f}")
 ```
 
+### Good tuning workflow
+1. Build a baseline.
+2. Protect the test set.
+3. Choose the metric that matches the goal.
+4. Pick 1 to 3 meaningful parameters.
+5. Compare against baseline, not just another tuned run.
+6. Record what improved and what got worse.
+
 ---
+
+## Part 5: Deep Learning, LLMs, and Serving
 
 ## 🧠 Deep Learning (PyTorch)
 
@@ -681,6 +1266,8 @@ docker run -v $(pwd):/app -p 8000:8000 my-ml-app
 
 ---
 
+## Part 6: Operations and Troubleshooting
+
 ## 📌 Common Patterns
 
 ### Train/Test Split
@@ -705,9 +1292,10 @@ df = df.fillna(df.mean())  # Fill with mean
 
 ### Encode Categorical Variables
 ```python
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
-df['category_encoded'] = le.fit_transform(df['category'])
+from sklearn.preprocessing import OneHotEncoder
+
+encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
+encoded = encoder.fit_transform(df[['category']])
 ```
 
 ### Feature Selection

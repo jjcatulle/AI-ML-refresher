@@ -101,6 +101,22 @@ By end of Phase 0, you will:
 - ✅ Use Pandas, NumPy, and Matplotlib without guessing
 - ✅ Understand core beginner terms before touching full ML projects
 
+### Phase 0 Section: Data Transformation and Processing
+This phase builds your data intuition before modeling.
+
+- Learn how raw tables become model-ready inputs.
+- Practice identifying numeric vs categorical columns and why that matters.
+- Understand missing values, inconsistent types, and outliers as first-class data issues.
+- Build a habit of documenting every transformation so your workflow is reproducible.
+
+### Phase 0 Section: Evaluating and Improving Models
+At this stage, evaluation is mostly conceptual, but the mindset starts here.
+
+- Learn why train/test separation prevents fake confidence.
+- Understand that a model can look "accurate" while still failing important cases.
+- Start using a baseline-first mindset: compare to simple rules before complex models.
+- Learn the iteration loop: evaluate -> inspect errors -> improve data/features -> reevaluate.
+
 ### Phase 0 Modules
 1. **Orientation and ML 101**
   - What ML is and is not
@@ -169,6 +185,24 @@ By end of Phase 1, you will:
 - ✅ Evaluate models using appropriate metrics
 - ✅ Build a repeatable offline evaluation workflow before changing models
 - ✅ Feature engineer and select the best features
+
+### Phase 1 Section: Data Transformation and Processing
+Phase 1 makes preprocessing a repeatable engineering workflow, not a one-off cleanup task.
+
+- Convert messy columns to consistent, model-safe types.
+- Handle missing values with explicit strategies (drop, impute, or flag).
+- Encode categorical features and scale numeric features where needed.
+- Use preprocessing pipelines so training and inference apply identical transformations.
+- Track feature lineage so you can explain exactly what changed and why.
+
+### Phase 1 Section: Evaluating and Improving Models
+This is where model quality becomes measurable and improvable.
+
+- Choose metrics by business goal (for example, recall-heavy fraud detection).
+- Use confusion matrix, ROC/PR curves, and cross-validation to avoid misleading conclusions.
+- Do threshold tuning instead of relying only on default 0.50 probability cutoffs.
+- Run error analysis by slice (segment, tenure, geography, class imbalance).
+- Improve performance iteratively through features, hyperparameters, and data quality fixes.
 
 ### Core Concepts
 1. **Data Science Fundamentals**
@@ -294,6 +328,24 @@ By end of Phase 2, you will:
 - ✅ Deploy LLM-powered applications to production
 - ✅ Build eval datasets for RAG and compare versions with repeatable scoring
 - ✅ Understand transformer architecture basics
+
+### Phase 2 Section: Data Transformation and Processing
+In LLM systems, data processing shifts from tabular features to retrieval-ready knowledge assets.
+
+- Convert documents into high-quality chunks with metadata that supports retrieval.
+- Normalize source quality (deduplication, stale content checks, format cleanup).
+- Design chunking, indexing, and embedding strategies to preserve meaning.
+- Build ingestion pipelines that are deterministic and rerunnable.
+- Treat retrieval data quality as a core lever of answer quality.
+
+### Phase 2 Section: Evaluating and Improving Models
+Evaluation in this phase measures the full system, not just the LLM.
+
+- Separate retrieval quality from generation quality during debugging.
+- Use RAG metrics (faithfulness, context precision/recall, answer relevance).
+- Evaluate with fixed test sets, adversarial prompts, and regression suites.
+- Compare versions with controlled side-by-side scoring.
+- Improve by tuning chunking, retriever settings, prompts, and guardrails together.
 
 ### Core Concepts
 1. **LLM Fundamentals**
@@ -489,6 +541,24 @@ By end of Phase 3, you will:
 - ✅ Use PyTorch or TensorFlow proficiently
 - ✅ Train models on custom datasets
 - ✅ Build multimodal retrieval and context pipelines (text + image/video metadata)
+
+### Phase 3 Section: Data Transformation and Processing
+For deep learning, data processing directly controls whether training is stable and useful.
+
+- Build dataset pipelines with consistent splits, augmentation, and labeling quality checks.
+- Standardize tensor shapes, normalization, and batching for reproducible training.
+- Handle sequence tokenization, truncation, and padding deliberately.
+- For multimodal work, align text/image/video metadata into a unified retrieval schema.
+- Version training datasets so model comparisons are meaningful.
+
+### Phase 3 Section: Evaluating and Improving Models
+This phase emphasizes diagnosing training behavior, not only final scores.
+
+- Track loss curves, validation metrics, and overfitting signals over time.
+- Use ablation tests to verify which architecture choices actually help.
+- Evaluate robustness across slices, classes, and hard examples.
+- Tune optimization settings (learning rate, regularization, scheduler) systematically.
+- Improve models through disciplined experiment tracking, not random trial-and-error.
 
 ### Core Concepts
 1. **Neural Network Fundamentals**
@@ -727,6 +797,24 @@ By end of Phase 4, you will:
 - ✅ Scale systems from prototype to production
 - ✅ Run shadow mode experiments for safe model upgrades
 - ✅ Implement governance guardrails for safety, privacy, and compliance
+
+### Phase 4 Section: Data Transformation and Processing
+In production, transformation logic must be reliable, observable, and identical across environments.
+
+- Enforce train/serve consistency so online features match training assumptions.
+- Add schema validation and data contracts to prevent silent pipeline breakage.
+- Build ETL pipelines with retries, idempotency, and lineage tracking.
+- Monitor feature drift and freshness in real-time and batch contexts.
+- Automate rollback paths when upstream data quality degrades.
+
+### Phase 4 Section: Evaluating and Improving Models
+Phase 4 turns evaluation into an ongoing production safety system.
+
+- Run continuous offline and online evaluations with clear release gates.
+- Use shadow mode, canary releases, and regression checks before full rollout.
+- Track business KPIs alongside model metrics to detect real impact.
+- Detect quality decay and trigger retraining or rollback automatically.
+- Close the loop with post-deployment error analysis and governance audits.
 
 ### Core Concepts
 1. **Model Serving**

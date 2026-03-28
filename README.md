@@ -23,6 +23,14 @@ Your personalized zero-to-job-ready journey to become a production-ready AI Syst
 
 5. **[📏 EVALUATION_FRAMEWORK.md](docs/EVALUATION_FRAMEWORK.md)** - The scoring system for ML, RAG, and agent quality
 
+6. **[🧼 DATA_PREP_CHEATSHEET.md](docs/DATA_PREP_CHEATSHEET.md)** - Repeatable pre-training data preparation checklist
+
+7. **[🔁 FULL_ML_FLOW_CHECKLIST.md](docs/FULL_ML_FLOW_CHECKLIST.md)** - End-to-end project flow habit from problem to handoff
+
+8. **[🗂️ ONE_PAGE_ML_FLOW_CARD.md](docs/ONE_PAGE_ML_FLOW_CARD.md)** - Detailed execution card with examples, checks, and references
+
+9. **[🎛️ HYPERPARAMETER_TUNING_GUIDE.md](docs/HYPERPARAMETER_TUNING_GUIDE.md)** - How tuning works, when to do it, and how to avoid tuning mistakes
+
 Then start with Week 1: Read `guides/phase1/GUIDE_Week1_DataExploration.md` → Open `phases/phase1/starters/STARTER_Week1_DataExploration.ipynb`
 
 If you are brand new to Python or ML, start with the deeper foundation ramp in `docs/AI-ML-LEARNING-GUIDE.md` before rushing into projects.
@@ -47,6 +55,10 @@ ML-AI-learning/
 ├── 📖 docs/                                   # Documentation & references
 │   ├── AI-ML-LEARNING-GUIDE.md                # 16-page curriculum overview
 │   ├── EVALUATION_FRAMEWORK.md                # How to measure ML/RAG/agent quality
+│   ├── DATA_PREP_CHEATSHEET.md                # Data preparation checklist before modeling
+│   ├── FULL_ML_FLOW_CHECKLIST.md              # Full ML project flow checklist
+│   ├── ONE_PAGE_ML_FLOW_CARD.md               # Detailed step-by-step ML execution card
+│   ├── HYPERPARAMETER_TUNING_GUIDE.md         # Explanation-first tuning guide
 │   ├── QUICK_REFERENCE.md                     # Code syntax cheat sheet
 │   ├── CHALLENGE_TRACKER.md                   # Your progress checklist
 │   └── .agent.md                              # Your AI learning agent
@@ -108,6 +120,15 @@ ML-AI-learning/
    - Know what success metric you are optimizing
    - Keep a baseline and failure cases
    - Treat evals as part of the build, not cleanup at the end
+
+0.5 **Read DATA_PREP_CHEATSHEET.md and FULL_ML_FLOW_CHECKLIST.md** (in docs/)
+   - Prepare data before visualization and training
+   - Follow a consistent full-cycle workflow on every project
+
+0.6 **Use ONE_PAGE_ML_FLOW_CARD.md during execution** (in docs/)
+   - Follow the expanded step-by-step checks
+   - Use the embedded examples and references while building
+   - Build repeatable habits instead of one-off fixes
 
 1. **Read HOW_TO_SOLVE_CHALLENGES.md** (in guides/common/)
    - 7-step methodology for solving ANY challenge
